@@ -1,4 +1,13 @@
 # React Drills
+
+#### The Goal
+These drills are here to help you improve your React skills. When you first go through these sets of problems, you may need to look at the solutions for help if you're unsure or stuck. The goal, however, should be to get to the point where you can complete all of these sets without any help from the solutions.
+
+#### The Challenge
+Once you get to the point where you no longer have to look at the solutions for help, time yourself to see how long it takes you to complete all of these sets. Now try to beat your time at least twice. These are called drills for a reason! Repetition will help solidify these concepts. 
+
+Good luck!
+
 ## Set 1
 
 1. Create a basic react app where you type in a text box and it shows up as text somewhere else on the screen.
@@ -68,9 +77,9 @@ class App extends Component {
   }
 
   render() {
-    let foodsToDisplay = this.state.foods.map((element) => {
+    let foodsToDisplay = this.state.foods.map((element, index) => {
       return (
-        <h2>{element}</h2>
+        <h2 key={index}>{element}</h2>
       )
     })
     return (
