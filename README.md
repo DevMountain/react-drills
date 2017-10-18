@@ -40,6 +40,7 @@ export default App;
 ```
 
 </details>
+</br>
 
 2. Create an app where there is an array of data (in the component's state) that is shown on the screen as a list
 ### Solution
@@ -84,6 +85,7 @@ export default App;
 ```
 
 </details>
+</br>
 
 3. Create an app where there is a list of data on the screen (from component's state) where you can type to filter what's shown in the list.
 ### Solution
@@ -138,6 +140,7 @@ export default App;
 ```
 
 </details>
+</br>
 
 4. Create an app hitting an api (swapi.co, birdapi.com, pokeapi, smurfs, marvel api, etc).
 ### Solution
@@ -184,6 +187,7 @@ export default App;
 ```
 
 </details>
+</br>
 
 5. Make a larger app if you have time.
 
@@ -263,6 +267,7 @@ export default Login;
 ```
 
 </details>
+</br>
 
 7. Create a component that is passed an image string via props and renders the image via an `<img />` tag.
 ### Solution
@@ -307,6 +312,7 @@ export default function Image(props) {
 ```
 
 </details>
+</br>
 
 8. Create an app that displays your to-do list. You will need two components, your App component and a Todo component. Pass individual to-do items as props to the Todo component.
     - To-do list on App component state.
@@ -384,6 +390,7 @@ export default function TodoList (props) {
 ```
 
 </details>
+</br>
 
 ## Set 3 (Routing)
 
@@ -525,8 +532,7 @@ export default function Details() {
 ```
 
 </details>
-
-
+</br>
 
 10. Create an app that has two routes (using `react-router-dom`):
       * products `'/'`
@@ -695,6 +701,7 @@ export default Details;
 ```
 
 </details>
+</br>
 
 
 ## Copyright
