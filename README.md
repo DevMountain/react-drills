@@ -23,13 +23,15 @@ You can then test your work for each question, as you develope a solution, by ru
 
 ### Question #1
 
-Create a basic react app where you type in a text box and it shows up as text somewhere else on the screen.
+Create a basic react app where you type in a text box and it shows up as text on the DOM.
 
 ### Solution
-<details>
-<summary><code> App.js </code></summary>
 
-```javascript
+<details>
+
+<summary> <code> app-1/src/App.js </code> </summary>
+
+```js
 import React, { Component } from 'react';
 import logo from './logo.svg';
 import './App.css';
@@ -43,17 +45,15 @@ class App extends Component {
     }
   }
 
-  handleChange(value) {
-    this.setState({
-      message: value
-    })
-  }  
+  handleChange( value ) {
+    this.setState({ message: value })
+  }
 
   render() {
     return (
       <div className="App">
-        <input onChange={(e) => this.handleChange(e.target.value)} type="text" />
-        {this.state.message}
+        <input onChange={ (e) => this.handleChange( e.target.value ) } type="text" />
+        <p>{ this.state.message }</p>
       </div>
     );
   }
@@ -63,7 +63,8 @@ export default App;
 ```
 
 </details>
-</br>
+
+
 
 2. Create an app where there is an array of data (in the component's state) that is shown on the screen as a list
 ### Solution
