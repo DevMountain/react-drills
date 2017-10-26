@@ -122,12 +122,17 @@ export default App;
 
 <img src="https://github.com/DevMountain/react-drills/blob/assets/2.png" />
 
-3. Create an app where there is a list of data on the screen (from component's state) where you can type to filter what's shown in the list.
-### Solution
-<details>
-<summary><code> App.js </code></summary>
+### Question #3
 
-```javascript
+Create an app where there is an array of data on state that is then shown on the DOM as a list. There should also be a way for the user to filter what's shown in the list. The array of data can be as simple as an array of strings. The list can be as simple as a list of `<h2>` elements. 
+
+### Solution
+
+<details>
+
+<summary> <code> app-3/src/App.js </code> </summary>
+
+```js
 import React, { Component } from 'react';
 import logo from './logo.svg';
 import './App.css';
@@ -137,35 +142,32 @@ class App extends Component {
     super();
 
     this.state = {
+      filterString: "",
       foods: [
         "spaghetti",
         "ice cream",
         "sushi",
         "bologna",
         "cheese"
-      ],
-      filterString: ""
+      ]
     }
   }
 
-  handleChange(filter) {
-    this.setState({
-      filterString: filter
-    })
+  handleChange( filter ) {
+    this.setState({ filterString: filter })
   }
 
   render() {
-    let foodsToDisplay = this.state.foods.filter((element, index) => {
-      return element.includes(this.state.filterString);
-    }).map((element, index) => {
-      return <h2 key={index}>{element}</h2>
+    let foodsToDisplay = this.state.foods.filter( (element, index) => {
+      return element.includes( this.state.filterString );
+    }).map( (element, index) => {
+      return <h2 key={ index }>{ element }</h2>
     })
 
-    console.log(foodsToDisplay);
     return (
       <div className="App">
-        <input onChange={(e) => this.handleChange(e.target.value)} type="text" />
-        {foodsToDisplay}
+        <input onChange={ (e) => this.handleChange( e.target.value ) } type="text" />
+        { foodsToDisplay }
       </div>
     );
   }
@@ -175,7 +177,10 @@ export default App;
 ```
 
 </details>
-</br>
+
+<br />
+
+<img src="https://github.com/DevMountain/react-drills/blob/assets/3g.gif" />
 
 4. Create an app hitting an api (swapi.co, birdapi.com, pokeapi, smurfs, marvel api, etc).
 ### Solution
