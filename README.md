@@ -323,83 +323,95 @@ export default function Image( props ) {
 
 ### Question #6
 
-Create an app that displays your to-do list. You will need two components, your App component and a Todo component. Pass individual to-do items as props to the Todo component.
-    - To-do list on App component state.
-    - Todo component renders 1 to-do item.
+Create an app that displays a to-do list. You will need two components, the `App` component and a `Todo` <b>functional</b> component. The `App` component should be responsible for getting new tasks and storing the list of tasks. The `Todo` component should be responsible for display the tasks from the `App` component in a list-like fashion. The `App` component should pass down a `tasks array` into the `Todo` component as a prop.
 
 ### Solution
-<details>
-<summary><code> App.js </code></summary>
 
-```javascript
+<details>
+
+<summary><code> app-6/src/App.js </code></summary>
+
+```js
 import React, { Component } from 'react';
-import TodoList from './TodoList'
+import logo from './logo.svg';
 import './App.css';
+import Todo from './Todo';
 
 class App extends Component {
-  constructor(props) {
-    super(props);
+  constructor() {
+    super();
 
     this.state = {
       list: [],
       input: ''
-    }
+    };
+
+    this.handleAddTask = this.handleAddTask.bind( this );
   }
 
-  handleInputChange(value) {
-    this.setState({
-      input: value
-    })
+  handleInputChange( value ) {
+    this.setState({ input: value });
   }
-  handleAddChore(value) {
-    this.setState({
-      list: [...this.state.list, value],
-      input: ''
-    })
+
+  handleAddTask() {
+    this.setState({ 
+      list: [...this.state.list, this.state.input ], 
+      input: '' 
+    });
   }
+
   render() {
-    let list = this.state.list.map((e,i) => {
+    let list = this.state.list.map( ( element, index ) => {
       return (
-        <TodoList key={i} chore={e} />
+        <Todo key={ index } task={ element } />
       )
     })
+
     return (
       <div className="App">
         <h1>My to-do list:</h1>
+
         <div>
-          <input value={this.state.input} placeholder="Enter new chore" onChange={(e) => this.handleInputChange(e.target.value)}/>
-          <button onClick={() => this.handleAddChore(this.state.input)}>Add</button>
+          <input value={this.state.input} 
+                 placeholder="Enter new task" 
+                 onChange={ (e) => this.handleInputChange( e.target.value ) }
+          />
+
+          <button onClick={ this.handleAddTask }>Add</button>
         </div>
-        <hr/>
-        {list}
+
+        <br />
+
+        { list }
       </div>
     );
   }
 }
 
 export default App;
-
 ```
 
 </details>
 
 <details>
-<summary><code> TodoList.js </code></summary>
 
-```javascript
+<summary><code> app-6/src/Todo.js </code></summary>
+
+```js
 import React from 'react';
 
-export default function TodoList (props) {
-    return (
-        <div>
-            {props.chore}
-        </div>
-    )
+export default function Todo (props) {
+  return (
+    <p>{ props.task }</p>
+  )
 }
 ```
 
 </details>
-</br>
+
+<br />
+
+<img src="https://github.com/DevMountain/react-drills/blob/assets/6g.gif" />
 
 ### Question #7
 
