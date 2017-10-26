@@ -182,7 +182,7 @@ export default App;
 
 <img src="https://github.com/DevMountain/react-drills/blob/assets/3g.gif" />
 
-## Set 2 - State, Class Methods, Capturing User Input, Props, Separation of Concerns
+## Set 2 - State, Class Methods, Capturing User Input, Props, Multiple Components
 
 ### Question #4
 
