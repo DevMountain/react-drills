@@ -269,14 +269,17 @@ export default Login;
 
 ### Question #5
 
-Create an `Image` component that renders an `<img />` element. The `src` for the `<img />` should be passed down as a prop from the parent component. You can use whatever image URL you would like to or you can get a placeholder from <a href="https://placeholder.com/">Click Me!</a>
+Create an `Image` <b>functional</b> component that renders an `<img />` element. The `src` for the `<img />` should be passed down as a prop from the parent component. You can use whatever image URL you would like to or you can get a placeholder from <a href="https://placeholder.com/">Click Me!</a>
 
 ### Solution
-<details>
-<summary><code> App.js </code></summary>
 
-```javascript
+<details>
+
+<summary><code> app-5/src/App.js </code></summary>
+
+```js
 import React, { Component } from 'react';
+import logo from './logo.svg';
 import './App.css';
 import Image from './Image';
 
@@ -284,8 +287,7 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        <h1>Below is my image:</h1>
-        <Image myImage={"https://http.cat/200"}/>
+        <Image myImage={ "https://http.cat/409" } />
       </div>
     );
   }
@@ -298,22 +300,26 @@ export default App;
 </details>
 
 <details>
-<summary><code> Image.js </code></summary>
 
-```javascript
+<summary><code> app-5/src/Image.js </code></summary>
+
+```js
 import React from 'react';
 
-export default function Image(props) {
-    return (
-        <div>
-            <img src={props.myImage} alt=""/>
-        </div>
-    )
+export default function Image( props ) {
+  return (
+    <div>
+      <img src={ props.myImage } alt="" />
+    </div>
+  )
 }
 ```
 
 </details>
-</br>
+
+<br />
+
+<img src="https://github.com/DevMountain/react-drills/blob/assets/5.png" />
 
 ### Question #6
 
