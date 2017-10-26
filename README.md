@@ -14,7 +14,7 @@ Good Luck!
 
 To help speed up the process of moving from question to question we have provided a bunch of `app-#/` folders that have been created using the `create-react-app` CLI. Therefore, if you are currently on question 1, you will put your work inside of `app-1`. If you are currently on question 4, you will put your work inside of `app-4`.
 
-* Run `npm install` in each `app-#/` folder before starting the questions.
+* Run `npm install` in each `app-#/` folder before starting the questions ( all at once or one-by-one ).
 
 You can then test your work for each question by running `npm run start`.
 
