@@ -64,9 +64,10 @@ export default App;
 
 </details>
 
+### Question #2
 
+Create an app where there is an array of data (in the component's state) that is shown on the screen as a list
 
-2. Create an app where there is an array of data (in the component's state) that is shown on the screen as a list
 ### Solution
 <details>
 <summary><code> App.js </code></summary>
