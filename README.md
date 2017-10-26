@@ -415,7 +415,136 @@ export default function Todo (props) {
 
 ### Question #7
 
-Create an app similiar to question 6........
+Create an app similiar to question #6, except this time add a new third component called `NewTask`. `NewTask` should be responsible for adding a new task to a `task array` on the `App` component. Also add a new fourth <b>functional</b> component called `List`. `List` should be responsible for display the tasks inside of a `task array` on the `App` component in a list-like fashion.
+
+<details>
+
+<summary> <code> app-7/src/App.js </code> </summary>
+
+```js
+import React, { Component } from 'react';
+import logo from './logo.svg';
+import './App.css';
+import NewTask from './NewTask';
+import List from './List';
+
+class App extends Component {
+  constructor() {
+    super();
+
+    this.state = {
+      list: []
+    };
+
+    this.handleAddTask = this.handleAddTask.bind( this );
+  }
+
+  handleAddTask( task ) {
+    this.setState({ list: [ ...this.state.list, task ] });
+  }
+
+  render() {
+    return (
+      <div className="App">
+        <h1>My to-do list:</h1>
+        <NewTask add={ this.handleAddTask } />
+        <List tasks={ this.state.list } />
+      </div>
+    );
+  }
+}
+
+export default App;
+```
+
+</details>
+
+<details>
+
+<summary> <code> app-7/src/NewTask.js </code> </summary>
+
+```js
+import React, { Component } from 'react';
+
+class NewTask extends Component {
+  constructor() {
+    super();
+
+    this.state = {
+      input: ''
+    };
+
+    this.handleAdd = this.handleAdd.bind( this );
+  }
+
+  handleInputChange( value ) {
+    this.setState({ input: value });
+  }
+
+  handleAdd() {
+    this.props.add( this.state.input );
+    this.setState({ input: '' });
+  }
+
+  render() {
+    return (
+      <div>
+        <input value={ this.state.input } 
+              placeholder="Enter new task" 
+              onChange={ (e) => this.handleInputChange( e.target.value ) }
+        />
+
+        <button onClick={ this.handleAdd }>Add</button>
+      </div>
+    )
+  }
+}
+
+export default NewTask;
+```
+
+</details>
+
+<details>
+
+<summary> <code> app-7/src/List.js </code> </summary>
+
+```js
+import React from 'react';
+import Todo from './Todo';
+
+export default function List( props ) {
+  let list = props.tasks.map( ( element, index ) => {
+    return (
+      <Todo key={ index } task={ element } />
+    )
+  })
+
+  return (
+    <div>
+      { list }
+    </div>
+  )
+}
+```
+
+</details>
+
+<details>
+
+<summary> <code> app-7/src/Todo.js </code> </summary>
+
+```js
+import React from 'react';
+
+export default function Todo (props) {
+  return (
+    <p>{ props.task }</p>
+  )
+}
+```
+
+</details>
 
 <br />
 
