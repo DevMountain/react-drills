@@ -411,11 +411,15 @@ export default function Todo (props) {
 
 <br />
 
-<img src="https://github.com/DevMountain/react-drills/blob/assets/6g.gif" />
+<img src="https://github.com/DevMountain/react-drills/blob/assets/6-7g.gif" />
 
 ### Question #7
 
 Create an app similiar to question 6........
+
+<br />
+
+<img src="https://github.com/DevMountain/react-drills/blob/assets/6-7g.gif" />
 
 ## Set 3 - Axios ( hitting an API ), React Lifecycle Methods
 
