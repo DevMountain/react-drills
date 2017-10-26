@@ -683,7 +683,7 @@ export default (
 
 <details>
 
-<summary><code> App.js </code></summary>
+<summary><code> app-9/src/App.js </code></summary>
 
 ```js
 import React, { Component } from 'react';
