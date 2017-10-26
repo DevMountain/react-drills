@@ -1,14 +1,14 @@
 <img src="https://devmounta.in/img/logowhiteblue.png" width="250" align="right">
 
-# React Drills
+# Project Summary
 
-#### The Goal
-These drills are here to help you improve your React skills. When you first go through these sets of problems, you may need to look at the solutions for help if you're unsure or stuck. The goal, however, should be to get to the point where you can complete all of these sets without any help from the solutions.
+This project is geared towards helping you improve your React skills. We will provided minimal guidance compared to most afternoon projects that offer detailed instructions. Therefore, this project can be used as a good check if you are truly understanding and implementing React on your own. When you first go through these set of problems, you may need to look at solutions for help. The goal, however, should be to get to the point where you can complete all sets of problems without any help from solutions and/or mentors.
 
-#### The Challenge
-Once you get to the point where you no longer have to look at the solutions for help, time yourself to see how long it takes you to complete all of these sets. Now try to beat your time at least twice. These are called drills for a reason! Repetition will help solidify these concepts. 
+## Challenge
 
-Good luck!
+Once you get to the point where you no longer have to look at the solutions and/or ask mentors for help, time yourself to see how long it takes you to complete all of these sets. After your first time, try to beat that time at least twice. The project is called React Drills for a reason! Repetition will help solidify these React concepts.
+
+Good Luck!
 
 ## Set 1
 
