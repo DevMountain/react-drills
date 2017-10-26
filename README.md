@@ -64,6 +64,10 @@ export default App;
 
 </details>
 
+<img src="https://github.com/DevMountain/react-drills/blob/assets/1g.gif" />
+
+<br />
+
 ### Question #2
 
 Create an app where there is an array of data (in the component's state) that is shown on the screen as a list
