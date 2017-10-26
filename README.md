@@ -186,10 +186,12 @@ export default App;
 
 ### Question #4
 
-Create a "login" element component that includes two text inputs, "username" and "password", and a button ("login"). When the login button is clicked, show an alert.
+Create a `Login` component that has two text inputs, one for a `username` and one for a `password`, and a button to login the user. When the login button is clicked, an alert should be showed to the user that displays what the user typed in for the `username` and `password`.
 
 ### Solution
+
 <details>
+
 <summary><code> App.js </code></summary>
 
 ```javascript
