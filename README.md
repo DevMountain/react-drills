@@ -452,6 +452,10 @@ export default App;
 
 </details>
 
+<br />
+
+<img src="https://github.com/DevMountain/react-drills/blob/assets/8.png" />
+
 ### Extra Practice
 
 Complete the HTTP mini located at: <a href="https://github.com/DevMountain/http-mini">Click Me!</a>
