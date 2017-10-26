@@ -618,67 +618,78 @@ Complete the HTTP mini located at: <a href="https://github.com/DevMountain/http-
 ### Question #9
 
 Create an app that has three routes (using `react-router-dom`):
-   * home `'/'`
-   * sign up `'/signup'`
-   * details `'/details'`
+  * Component name: `Home`, Component route: `'/'`
+  * Component name: `Signup`, Component route: `'/signup'`
+  * Component name: `details`, Component route:  `'/details'`
 
-- Create a simple menu for each view that allows you to navigate between all three routes.
+Each of these components only need a very basic template:
 
-- Use any of the APIs listed in app #4 above and display the data in the details route.
+```js
+<div>
+  <h1>This is the Home/Signup/Details page.</h1>
+</div>
+```
+
+The `App` component should render a `<nav>` element that provides links to all three routes. The `router` should be rendered underneath the `nav` element. 
+
 ### Solution
-<details>
-<summary><code> index.js </code></summary>
 
-```javascript
+<details>
+
+<summary><code> app-9/src/index.js </code></summary>
+
+```js
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import registerServiceWorker from './registerServiceWorker';
 
-import {HashRouter} from 'react-router-dom';
+import { HashRouter } from 'react-router-dom';
 
 ReactDOM.render(
-    <HashRouter>
-        <App />
-    </HashRouter>
+  <HashRouter>
+    <App />
+  </HashRouter>
 , document.getElementById('root'));
-registerServiceWorker();
 
+registerServiceWorker();
 ```
 
 </details>
 
 <details>
-<summary><code> router.js </code></summary>
+
+<summary><code> app-9/src/router.js </code></summary>
 
 ```javascript
 import React from 'react';
+import { Switch, Route } from 'react-router-dom';
 
-import {Switch, Route} from 'react-router-dom';
-import Home from './components/Home';
-import Signup from './components/Signup';
-import Details from './components/Details';
+import Home from './Home';
+import Signup from './Signup';
+import Details from './Details';
 
 export default (
-        <Switch>
-            <Route exact path='/' component={Home}/>
-            <Route path='/signup' component={Signup}/>
-            <Route path='/details' component={Details}/>
-        </Switch>
+  <Switch>
+    <Route exact path='/' component={ Home } />
+    <Route path='/signup' component={ Signup } />
+    <Route path='/details' component={ Details } />
+  </Switch>
 )
 ```
 
 </details>
 
 <details>
+
 <summary><code> App.js </code></summary>
 
-```javascript
+```js
 import React, { Component } from 'react';
 import './App.css';
 
-import {Link} from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import router from './router';
 
 class App extends Component {
@@ -692,70 +703,78 @@ class App extends Component {
             <Link to='/details'>Details</Link>
           </ul>
         </nav>
-        <hr/>
+
+        <br />
+
         {router}
+
       </div>
     );
   }
 }
 
 export default App;
-
 ```
 
 </details>
 
 <details>
-<summary><code> Home.js </code></summary>
 
-```javascript
+<summary><code> app-9/src/Home.js </code></summary>
+
+```js
 import React from 'react';
 
 export default function Home() {
-    return (
-        <div>
-            <h1>This is the home page.</h1>
-        </div>
-    )
+  return (
+    <div>
+      <h1>This is the home page.</h1>
+    </div>
+  )
 }
 ```
 
 </details>
 
 <details>
-<summary><code> Signup.js </code></summary>
 
-```javascript
+<summary><code> app-9/src/Signup.js </code></summary>
+
+```js
 import React from 'react';
 
 export default function Signup() {
-    return (
-        <div>
-            <h1>This is the signup page.</h1>
-        </div>
-    )
+  return (
+    <div>
+      <h1>This is the signup page.</h1>
+    </div>
+  )
 }
 ```
 
 </details>
 
 <details>
-<summary><code> Details.js </code></summary>
 
-```javascript
+<summary><code> app-9/src/Details.js </code></summary>
+
+```js
 import React from 'react';
 
-export default function Details() {
-    return (
-        <div>
-            <h1>This is the details page.</h1>
-        </div>
-    )
+export default function Signup() {
+  return (
+    <div>
+      <h1>This is the details page.</h1>
+    </div>
+  )
 }
 ```
 
 </details>
-</br>
+
+<br />
+
+<img src="https://github.com/DevMountain/react-drills/blob/assets/9g.gif" />
 
 ### Question #10
 
