@@ -395,7 +395,7 @@ export default function TodoList (props) {
 
 Create an app similiar to question 6........
 
-## Set 3 - Axios ( hitting an API )
+## Set 3 - Axios ( hitting an API ), React Lifecycle Methods
 
 ### Question #8
 
