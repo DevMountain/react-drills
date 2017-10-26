@@ -391,9 +391,13 @@ export default function TodoList (props) {
 </details>
 </br>
 
+### Question #7
+
+Create an app similiar to question 6........
+
 ## Set 3 - Axios ( hitting an API )
 
-### Question #7
+### Question #8
 
 Create an app hitting an API of your choice (swapi.co, birdapi.com, pokeapi, smurfs, marvel api, etc). The API should be hit as soon as the component is finished rendering. The app should set value(s) on state based on results from the API and then show the propertie(s) on state in the DOM.
 
@@ -452,7 +456,7 @@ Complete the HTTP mini located at: <a href="https://github.com/DevMountain/http-
 
 ## Set 3 (Routing)
 
-### Question #8
+### Question #9
 
 Create an app that has three routes (using `react-router-dom`):
    * home `'/'`
@@ -594,7 +598,7 @@ export default function Details() {
 </details>
 </br>
 
-### Question #9
+### Question #10
 
 Create an app that has two routes (using `react-router-dom`):
       * products `'/'`
