@@ -779,62 +779,68 @@ export default function Signup() {
 ### Question #10
 
 Create an app that has two routes (using `react-router-dom`):
-      * products `'/'`
-      * details `'/details/:id'`
-  - Hitting an api, show all products/info/people (depends on the api you hit) on the `products` route.
-  - When you click on a specific product, show the details in the `details` route. 
+  * Component name: `Products`, Component route: `'/'`
+  * Component name: `Details`, Component route: `'/details/:id'`
+
+The `App` component should render the `router`. The `Products` component should hit an API of your choice that shows a list of products/info/people/cars. When a user clicks on one of the products/info/people/cars it should route to `Details` component with the `id` as a route parameter. The `Details` component should hit an API of your choice to get more data for a single product/info/person/car.
+
+In the solution code to follow, we used the DevMountain Practice API server.
 
 ### Solution
-<details>
-<summary><code> index.js </code></summary>
 
-```javascript
+<details>
+
+<summary><code> app-10/src/index.js </code></summary>
+
+```js
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import registerServiceWorker from './registerServiceWorker';
 
-import {HashRouter} from 'react-router-dom';
+import { HashRouter } from 'react-router-dom';
 
 ReactDOM.render(
-    <HashRouter>
-        <App />
-    </HashRouter>
-    , document.getElementById('root'));
-registerServiceWorker();
+  <HashRouter>
+    <App />
+  </HashRouter>
+, document.getElementById('root'));
 
+registerServiceWorker();
 ```
 
 </details>
 
 <details>
-<summary><code> router.js </code></summary>
 
-```javascript
+<summary><code> app-10/src/router.js </code></summary>
+
+```js
 import React from 'react';
+import { Switch, Route } from 'react-router-dom';
 
-import {Switch, Route} from 'react-router-dom';
-import Products from './components/Products';
-import Details from './components/Details';
+import Products from './Products';
+import Details from './Details';
 
 export default (
-    <Switch>
-        <Route exact path='/' component={Products}/>
-        <Route path='/details/:id' component={Details}/>
-    </Switch>
+  <Switch>
+    <Route exact path='/' component={ Products } />
+    <Route path='/details/:id' component={ Details } />
+  </Switch>
 )
 ```
 
 </details>
 
 <details>
-<summary><code> App.js </code></summary>
 
-```javascript
+<summary><code> app-10/src/App.js </code></summary>
+
+```js
 import React, { Component } from 'react';
+import logo from './logo.svg';
 import './App.css';
-
 import router from './router';
 
 class App extends Component {
@@ -848,57 +854,52 @@ class App extends Component {
 }
 
 export default App;
-
 ```
 
 </details>
 
 <details>
-<summary><code> Products.js </code></summary>
 
-```javascript
+<summary><code> app-10/src/Products.js </code></summary>
+
+```js
 import React, { Component } from 'react';
-
-import {Link} from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import axios from 'axios';
 
 class Products extends Component {
-    constructor() {
-        super();
+  constructor() {
+    super();
 
-        this.state = {
-            products: []
-        }
+    this.state = {
+      products: []
     }
+  }
 
-    componentDidMount() {
-        axios.get('https://practiceapi.devmountain.com/products')
-        .then((response) => {
-            console.log(response.data);
-            this.setState({
-                products: response.data
-            })
-        })
-    }
+  componentDidMount() {
+    axios.get('https://practiceapi.devmountain.com/products').then( response => {
+      this.setState({ products: response.data });
+    })
+  }
 
-    render() {
-        let products = this.state.products.map((e,i) => {
-            if(e.image) {
-                return(
-                    <Link to={`/details/${e.id}`} key={i}>
-                        <img className="product-image" src={e.image}/>
-                    </Link>
-                )
-            }
-            
-        })
+  render() {
+    let products = this.state.products.map( ( product, index ) => {
+      if ( product.image ) {
         return (
-            <div>
-                <h1>Products</h1>
-                {products}
-            </div>
+          <Link key={ index } to={ `/details/${product.id}` }>
+            <img width="200" src={ product.image } />
+          </Link>
         )
-    }
+      }
+    });
+
+    return (
+      <div>
+        <h1>Products</h1>
+        { products }
+      </div>
+    )
+  }
 }
 
 export default Products;
@@ -907,45 +908,47 @@ export default Products;
 </details>
 
 <details>
-<summary><code> Details.js </code></summary>
 
-```javascript
-import React, {Component} from 'react';
+<summary><code> app-10/src/Details.js </code></summary>
 
+```js
+import React, { Component } from 'react';
 import axios from 'axios';
 
 class Details extends Component {
-    constructor(props) {
-        super(props);
+  constructor() {
+    super();
 
-        this.state = {
-            item: {}
-        }
+    this.state = {
+      item: {}
     }
+  }
 
-    componentDidMount() {
-        axios.get(`https://practiceapi.devmountain.com/products/${this.props.match.params.id}`)
-        .then((response) => {
-            this.setState({
-                item: response.data
-            })
-        })
-    }
-    render() {
-        return (
-            <div>
-                <h2>{this.state.item.title}</h2>
-                <img className="product-image" src={this.state.item.image}/>
-                <h4>{`Price: $${this.state.item.price}.00`}</h4>
-            </div>
-        )
-    }
+  componentDidMount() {
+    axios.get(`https://practiceapi.devmountain.com/products/${this.props.match.params.id}`).then( response => {
+      this.setState({ item: response.data });
+    })
+  }
+
+  render() {
+    return (
+      <div>
+        <h2>{ this.state.item.title }</h2>
+        <img width="200" src={ this.state.item.image }/>
+        <h4>{`Price: $${ this.state.item.price }.00`}</h4>
+      </div>
+    )
+  }
 }
 
 export default Details;
 ```
 
 </details>
+
+<br />
+
+<img src="https://github.com/DevMountain/react-drills/blob/assets/10g.gif" />
 
 ## Contributions
 
