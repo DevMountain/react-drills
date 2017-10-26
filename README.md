@@ -19,7 +19,7 @@ To help speed up the process of moving from question to question we have provide
 
 You can then test your work for each question, as you develope a solution, by running `npm run start`.
 
-## Set 1
+## Set 1 - State, Class Methods, Capturing User Input, Mapping, Axios
 
 1. Create a basic react app where you type in a text box and it shows up as text somewhere else on the screen.
 ### Solution
