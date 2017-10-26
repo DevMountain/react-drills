@@ -99,14 +99,15 @@ class App extends Component {
   }
 
   render() {
-    let foodsToDisplay = this.state.foods.map((element, index) => {
+    let foodsToDisplay = this.state.foods.map( (element, index) => {
       return (
-        <h2 key={index}>{element}</h2>
+        <h2 key={ index }>{ element }</h2>
       )
     })
+
     return (
       <div className="App">
-        {foodsToDisplay}
+        { foodsToDisplay }
       </div>
     );
   }
