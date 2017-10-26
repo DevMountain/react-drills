@@ -70,13 +70,15 @@ export default App;
 
 ### Question #2
 
-Create an app where there is an array of data (in the component's state) that is shown on the screen as a list
+Create an app where there is an array of data on state that is then shown on the DOM as a list. The array of data can be as simple as an array of strings. The list can be as simple as a list of `<h2>` elements.
 
 ### Solution
-<details>
-<summary><code> App.js </code></summary>
 
-```javascript
+<details>
+
+<summary> <code> app-2/src/App.js </code> </summary>
+
+```js
 import React, { Component } from 'react';
 import logo from './logo.svg';
 import './App.css';
@@ -114,7 +116,10 @@ export default App;
 ```
 
 </details>
-</br>
+
+<br />
+
+<img src="https://github.com/DevMountain/react-drills/blob/assets/2.png" />
 
 3. Create an app where there is a list of data on the screen (from component's state) where you can type to filter what's shown in the list.
 ### Solution
