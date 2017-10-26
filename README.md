@@ -446,6 +446,10 @@ export default App;
 
 </details>
 
+### Extra Practice
+
+Complete the HTTP mini located at: <a href="https://github.com/DevMountain/http-mini">Click Me!</a>
+
 ## Set 3 (Routing)
 
 ### Question #8
