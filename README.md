@@ -192,9 +192,9 @@ Create a `Login` component that has two text inputs, one for a `username` and on
 
 <details>
 
-<summary><code> App.js </code></summary>
+<summary><code> app-4/src/App.js </code></summary>
 
-```javascript
+```js
 import React, { Component } from 'react';
 import logo from './logo.svg';
 import './App.css';
@@ -217,53 +217,55 @@ export default App;
 </details>
 
 <details>
-<summary><code> Login.js </code></summary>
 
-```javascript
+<summary><code> app-4/src/Login.js </code></summary>
+
+```js
 import React, { Component } from 'react';
 
 class Login extends Component {
-    constructor() {
-        super();
+  constructor() {
+    super();
 
-        this.state = {
-            username: "",
-            password: ""
-        }
-    }
+    this.state = {
+      username: "",
+      password: ""
+    };
 
-    handleUsernameChange(name) {
-        this.setState({
-            username: name
-        })
-    }
+    this.handleLogin = this.handleLogin.bind( this );
+  }
 
-    handlePasswordChange(pass) {
-        this.setState({
-            password: pass
-        })
-    }
+  handleUsernameChange( name ) {
+    this.setState({ username: name });
+  }
 
-    handleLogin() {
-        alert("Username: " + this.state.username + " Password: " + this.state.password);
-    }
+  handlePasswordChange( pass ) {
+    this.setState({ password: pass });
+  }
 
-    render() {
-        return (
-            <div>
-                <input onChange={(e) => this.handleUsernameChange(e.target.value)} type="text"/>
-                <input onChange={(e) => this.handlePasswordChange(e.target.value)} type="text"/>
-                <button onClick={() => this.handleLogin()}>Login</button>
-            </div>
-        )
-    }
+  handleLogin() {
+    alert(`Username: ${ this.state.username } Password: ${ this.state.password }`);
+  }
+
+  render() {
+    return (
+      <div>
+        <input onChange={ (e) => this.handleUsernameChange( e.target.value ) } type="text"/>
+        <input onChange={ (e) => this.handlePasswordChange( e.target.value ) } type="text"/>
+        <button onClick={ this.handleLogin }>Login</button>
+      </div>
+    )
+  }
 }
 
 export default Login;
 ```
 
 </details>
-</br>
+
+<br />
+
+<img src="https://github.com/DevMountain/react-drills/blob/assets/4g.gif" />
 
 ### Question #5
 
@@ -409,7 +411,7 @@ The `axios` package should be used to hit an API.
 
 <details>
 
-<summary> <code> app-4/src/App.js </code> </summary>
+<summary> <code> app-8/src/App.js </code> </summary>
 
 ```js
 import React, { Component } from 'react';
