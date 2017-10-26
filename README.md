@@ -64,9 +64,9 @@ export default App;
 
 </details>
 
-<img src="https://github.com/DevMountain/react-drills/blob/assets/1g.gif" />
-
 <br />
+
+<img src="https://github.com/DevMountain/react-drills/blob/assets/1g.gif" />
 
 ### Question #2
 
