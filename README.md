@@ -269,7 +269,7 @@ export default Login;
 
 ### Question #5
 
-Create a component that is passed an image string via props and renders the image via an `<img />` tag.
+Create an `Image` component that renders an `<img />` element. The `src` for the `<img />` should be passed down as a prop from the parent component. You can use whatever image URL you would like to or you can get a placeholder from <a href="https://placeholder.com/">Click Me!</a>
 
 ### Solution
 <details>
