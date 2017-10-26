@@ -182,61 +182,12 @@ export default App;
 
 <img src="https://github.com/DevMountain/react-drills/blob/assets/3g.gif" />
 
-### Question 4
-
-Create an app hitting an api (swapi.co, birdapi.com, pokeapi, smurfs, marvel api, etc).
-
-### Solution
-<details>
-<summary><code> App.js </code></summary>
-
-```javascript
-import React, { Component } from 'react';
-import logo from './logo.svg';
-import './App.css';
-
-import axios from 'axios';
-
-class App extends Component {
-  constructor() {
-    super();
-
-    this.state = {
-      lukeSkywalker: ""
-    }
-  }
-
-  componentDidMount() {
-    axios.get("https://swapi.co/api/people/1")
-    .then((response) => {
-      this.setState({
-        lukeSkywalker: response.data
-      })
-    })
-  }
-  render() {
-    return (
-      <div className="App">
-        <h1>Name: {this.state.lukeSkywalker.name}</h1>
-        <h1>Birth Year: {this.state.lukeSkywalker.birth_year}</h1>
-        <h1>Height: {this.state.lukeSkywalker.height}</h1>
-        <h1>Eye Color: {this.state.lukeSkywalker.eye_color}</h1>
-      </div>
-    );
-  }
-}
-
-export default App;
-```
-
-</details>
-</br>
-
-5. Make a larger app if you have time.
-
 ## Set 2
 
-6. Create a "login" element component that includes two text inputs, "username" and "password", and a button ("login"). When the login button is clicked, show an alert.
+### Question #4
+
+Create a "login" element component that includes two text inputs, "username" and "password", and a button ("login"). When the login button is clicked, show an alert.
+
 ### Solution
 <details>
 <summary><code> App.js </code></summary>
@@ -312,7 +263,10 @@ export default Login;
 </details>
 </br>
 
-7. Create a component that is passed an image string via props and renders the image via an `<img />` tag.
+### Question #5
+
+Create a component that is passed an image string via props and renders the image via an `<img />` tag.
+
 ### Solution
 <details>
 <summary><code> App.js </code></summary>
@@ -357,7 +311,9 @@ export default function Image(props) {
 </details>
 </br>
 
-8. Create an app that displays your to-do list. You will need two components, your App component and a Todo component. Pass individual to-do items as props to the Todo component.
+### Question #6
+
+Create an app that displays your to-do list. You will need two components, your App component and a Todo component. Pass individual to-do items as props to the Todo component.
     - To-do list on App component state.
     - Todo component renders 1 to-do item.
 
@@ -435,9 +391,66 @@ export default function TodoList (props) {
 </details>
 </br>
 
+## Set 3 - Axios ( hitting an API )
+
+### Question #7
+
+Create an app hitting an API of your choice (swapi.co, birdapi.com, pokeapi, smurfs, marvel api, etc). The API should be hit as soon as the component is finished rendering. The app should set value(s) on state based on results from the API and then show the propertie(s) on state in the DOM.
+
+The `axios` package should be used to hit an API.
+
+### Solution
+
+<details>
+
+<summary> <code> app-4/src/App.js </code> </summary>
+
+```js
+import React, { Component } from 'react';
+import logo from './logo.svg';
+import './App.css';
+
+import axios from 'axios';
+
+class App extends Component {
+  constructor() {
+    super();
+
+    this.state = {
+      lukeSkywalker: ""
+    }
+  }
+
+  componentDidMount() {
+    axios.get("https://swapi.co/api/people/1").then( response => {
+      this.setState({
+        lukeSkywalker: response.data
+      });
+    });
+  }
+
+  render() {
+    return (
+      <div className="App">
+        <h1>Name: { this.state.lukeSkywalker.name }</h1>
+        <h1>Birth Year: { this.state.lukeSkywalker.birth_year }</h1>
+        <h1>Height: { this.state.lukeSkywalker.height }</h1>
+        <h1>Eye Color: { this.state.lukeSkywalker.eye_color }</h1>
+      </div>
+    );
+  }
+}
+
+export default App;
+```
+
+</details>
+
 ## Set 3 (Routing)
 
-9. Create an app that has three routes (using `react-router-dom`):
+### Question #8
+
+Create an app that has three routes (using `react-router-dom`):
    * home `'/'`
    * sign up `'/signup'`
    * details `'/details'`
@@ -577,11 +590,14 @@ export default function Details() {
 </details>
 </br>
 
-10. Create an app that has two routes (using `react-router-dom`):
+### Question #9
+
+Create an app that has two routes (using `react-router-dom`):
       * products `'/'`
       * details `'/details/:id'`
   - Hitting an api, show all products/info/people (depends on the api you hit) on the `products` route.
   - When you click on a specific product, show the details in the `details` route. 
+
 ### Solution
 <details>
 <summary><code> index.js </code></summary>
@@ -744,8 +760,6 @@ export default Details;
 ```
 
 </details>
-</br>
-
 
 ## Contributions
 
