@@ -613,7 +613,7 @@ export default App;
 
 Complete the HTTP mini located at: <a href="https://github.com/DevMountain/http-mini">Click Me!</a>
 
-## Set 4 - react-router-dom ( Routing )
+## Set 4 - react-router-dom ( Routing ), Axios ( hitting an API )
 
 ### Question #9
 
