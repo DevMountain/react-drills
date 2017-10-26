@@ -17,7 +17,7 @@ To help speed up the process of moving from question to question we have provide
 * Run `npm install` in each `app-#/` folder before starting the questions.
   * You can either run `npm install` for each `app-#/` before starting question one or just remember to run `npm install` as you move from question to question.
 
-You can then test your work for each question as you develope a solution by running `npm run start`.
+You can then test your work for each question, as you develope a solution, by running `npm run start`.
 
 ## Set 1
 
