@@ -1,23 +1,39 @@
 <img src="https://devmounta.in/img/logowhiteblue.png" width="250" align="right">
 
-# React Drills
+# Project Summary
 
-#### The Goal
-These drills are here to help you improve your React skills. When you first go through these sets of problems, you may need to look at the solutions for help if you're unsure or stuck. The goal, however, should be to get to the point where you can complete all of these sets without any help from the solutions.
+This project is geared towards helping you improve your React skills. We will provided minimal guidance compared to most afternoon projects that offer detailed instructions. Therefore, this project can be used as a good check if you are truly understanding and implementing React on your own. When you first go through these set of problems, you may need to look at solutions for help. The goal, however, should be to get to the point where you can complete all sets of problems without any help from solutions and/or mentors.
 
-#### The Challenge
-Once you get to the point where you no longer have to look at the solutions for help, time yourself to see how long it takes you to complete all of these sets. Now try to beat your time at least twice. These are called drills for a reason! Repetition will help solidify these concepts. 
+The solutions provided in this project are just one way you can accomplish the project. If you are curious if your solution is "correct", you can ask a mentor to compare your answer to the ones we are providing. 
 
-Good luck!
+## Challenge
 
-## Set 1
+Once you get to the point where you no longer have to look at the solutions and/or ask mentors for help, time yourself to see how long it takes you to complete all of these sets. After your first time, try to beat that time at least twice. The project is called React Drills for a reason! Repetition will help solidify these React concepts.
 
-1. Create a basic react app where you type in a text box and it shows up as text somewhere else on the screen.
+Good Luck!
+
+## Setup
+
+To help speed up the process of moving from question to question we have provided a bunch of `app-#/` folders that have been created using the `create-react-app` CLI. Therefore, if you are currently on question 1, you will put your work inside of `app-1`. If you are currently on question 4, you will put your work inside of `app-4`.
+
+* Run `npm install` in each `app-#/` folder before starting the questions.
+  * You can either run `npm install` for each `app-#/` before starting question one or just remember to run `npm install` as you move from question to question.
+
+You can then test your work for each question, as you develope a solution, by running `npm run start`.
+
+## Set 1 - State, Class Methods, Capturing User Input, Mapping, Axios
+
+### Question #1
+
+Create a basic react app where you type in a text box and it shows up as text on the DOM.
+
 ### Solution
-<details>
-<summary><code> App.js </code></summary>
 
-```javascript
+<details>
+
+<summary> <code> app-1/src/App.js </code> </summary>
+
+```js
 import React, { Component } from 'react';
 import logo from './logo.svg';
 import './App.css';
@@ -31,17 +47,15 @@ class App extends Component {
     }
   }
 
-  handleChange(value) {
-    this.setState({
-      message: value
-    })
-  }  
+  handleChange( value ) {
+    this.setState({ message: value })
+  }
 
   render() {
     return (
       <div className="App">
-        <input onChange={(e) => this.handleChange(e.target.value)} type="text" />
-        {this.state.message}
+        <input onChange={ (e) => this.handleChange( e.target.value ) } type="text" />
+        <p>{ this.state.message }</p>
       </div>
     );
   }
@@ -51,14 +65,22 @@ export default App;
 ```
 
 </details>
-</br>
 
-2. Create an app where there is an array of data (in the component's state) that is shown on the screen as a list
+<br />
+
+<img src="https://github.com/DevMountain/react-drills/blob/assets/1g.gif" />
+
+### Question #2
+
+Create an app where there is an array of data on state that is then shown on the DOM as a list. The array of data can be as simple as an array of strings. The list can be as simple as a list of `<h2>` elements.
+
 ### Solution
-<details>
-<summary><code> App.js </code></summary>
 
-```javascript
+<details>
+
+<summary> <code> app-2/src/App.js </code> </summary>
+
+```js
 import React, { Component } from 'react';
 import logo from './logo.svg';
 import './App.css';
@@ -79,14 +101,15 @@ class App extends Component {
   }
 
   render() {
-    let foodsToDisplay = this.state.foods.map((element, index) => {
+    let foodsToDisplay = this.state.foods.map( (element, index) => {
       return (
-        <h2 key={index}>{element}</h2>
+        <h2 key={ index }>{ element }</h2>
       )
     })
+
     return (
       <div className="App">
-        {foodsToDisplay}
+        { foodsToDisplay }
       </div>
     );
   }
@@ -96,14 +119,22 @@ export default App;
 ```
 
 </details>
-</br>
 
-3. Create an app where there is a list of data on the screen (from component's state) where you can type to filter what's shown in the list.
+<br />
+
+<img src="https://github.com/DevMountain/react-drills/blob/assets/2.png" />
+
+### Question #3
+
+Create an app where there is an array of data on state that is then shown on the DOM as a list. There should also be a way for the user to filter what's shown in the list. The array of data can be as simple as an array of strings. The list can be as simple as a list of `<h2>` elements. 
+
 ### Solution
-<details>
-<summary><code> App.js </code></summary>
 
-```javascript
+<details>
+
+<summary> <code> app-3/src/App.js </code> </summary>
+
+```js
 import React, { Component } from 'react';
 import logo from './logo.svg';
 import './App.css';
@@ -113,35 +144,32 @@ class App extends Component {
     super();
 
     this.state = {
+      filterString: "",
       foods: [
         "spaghetti",
         "ice cream",
         "sushi",
         "bologna",
         "cheese"
-      ],
-      filterString: ""
+      ]
     }
   }
 
-  handleChange(filter) {
-    this.setState({
-      filterString: filter
-    })
+  handleChange( filter ) {
+    this.setState({ filterString: filter })
   }
 
   render() {
-    let foodsToDisplay = this.state.foods.filter((element, index) => {
-      return element.includes(this.state.filterString);
-    }).map((element, index) => {
-      return <h2 key={index}>{element}</h2>
+    let foodsToDisplay = this.state.foods.filter( (element, index) => {
+      return element.includes( this.state.filterString );
+    }).map( (element, index) => {
+      return <h2 key={ index }>{ element }</h2>
     })
 
-    console.log(foodsToDisplay);
     return (
       <div className="App">
-        <input onChange={(e) => this.handleChange(e.target.value)} type="text" />
-        {foodsToDisplay}
+        <input onChange={ (e) => this.handleChange( e.target.value ) } type="text" />
+        { foodsToDisplay }
       </div>
     );
   }
@@ -151,65 +179,24 @@ export default App;
 ```
 
 </details>
-</br>
 
-4. Create an app hitting an api (swapi.co, birdapi.com, pokeapi, smurfs, marvel api, etc).
+<br />
+
+<img src="https://github.com/DevMountain/react-drills/blob/assets/3g.gif" />
+
+## Set 2 - State, Class Methods, Capturing User Input, Props, Multiple Components
+
+### Question #4
+
+Create a `Login` component that has two text inputs, one for a `username` and one for a `password`, and a button to login the user. When the login button is clicked, an alert should be showed to the user that displays what the user typed in for the `username` and `password`.
+
 ### Solution
+
 <details>
-<summary><code> App.js </code></summary>
 
-```javascript
-import React, { Component } from 'react';
-import logo from './logo.svg';
-import './App.css';
+<summary><code> app-4/src/App.js </code></summary>
 
-import axios from 'axios';
-
-class App extends Component {
-  constructor() {
-    super();
-
-    this.state = {
-      lukeSkywalker: ""
-    }
-  }
-
-  componentDidMount() {
-    axios.get("https://swapi.co/api/people/1")
-    .then((response) => {
-      this.setState({
-        lukeSkywalker: response.data
-      })
-    })
-  }
-  render() {
-    return (
-      <div className="App">
-        <h1>Name: {this.state.lukeSkywalker.name}</h1>
-        <h1>Birth Year: {this.state.lukeSkywalker.birth_year}</h1>
-        <h1>Height: {this.state.lukeSkywalker.height}</h1>
-        <h1>Eye Color: {this.state.lukeSkywalker.eye_color}</h1>
-      </div>
-    );
-  }
-}
-
-export default App;
-```
-
-</details>
-</br>
-
-5. Make a larger app if you have time.
-
-## Set 2
-
-6. Create a "login" element component that includes two text inputs, "username" and "password", and a button ("login"). When the login button is clicked, show an alert.
-### Solution
-<details>
-<summary><code> App.js </code></summary>
-
-```javascript
+```js
 import React, { Component } from 'react';
 import logo from './logo.svg';
 import './App.css';
@@ -232,61 +219,69 @@ export default App;
 </details>
 
 <details>
-<summary><code> Login.js </code></summary>
 
-```javascript
+<summary><code> app-4/src/Login.js </code></summary>
+
+```js
 import React, { Component } from 'react';
 
 class Login extends Component {
-    constructor() {
-        super();
+  constructor() {
+    super();
 
-        this.state = {
-            username: "",
-            password: ""
-        }
-    }
+    this.state = {
+      username: "",
+      password: ""
+    };
 
-    handleUsernameChange(name) {
-        this.setState({
-            username: name
-        })
-    }
+    this.handleLogin = this.handleLogin.bind( this );
+  }
 
-    handlePasswordChange(pass) {
-        this.setState({
-            password: pass
-        })
-    }
+  handleUsernameChange( name ) {
+    this.setState({ username: name });
+  }
 
-    handleLogin() {
-        alert("Username: " + this.state.username + " Password: " + this.state.password);
-    }
+  handlePasswordChange( pass ) {
+    this.setState({ password: pass });
+  }
 
-    render() {
-        return (
-            <div>
-                <input onChange={(e) => this.handleUsernameChange(e.target.value)} type="text"/>
-                <input onChange={(e) => this.handlePasswordChange(e.target.value)} type="text"/>
-                <button onClick={() => this.handleLogin()}>Login</button>
-            </div>
-        )
-    }
+  handleLogin() {
+    alert(`Username: ${ this.state.username } Password: ${ this.state.password }`);
+  }
+
+  render() {
+    return (
+      <div>
+        <input onChange={ (e) => this.handleUsernameChange( e.target.value ) } type="text"/>
+        <input onChange={ (e) => this.handlePasswordChange( e.target.value ) } type="text"/>
+        <button onClick={ this.handleLogin }>Login</button>
+      </div>
+    )
+  }
 }
 
 export default Login;
 ```
 
 </details>
-</br>
 
-7. Create a component that is passed an image string via props and renders the image via an `<img />` tag.
+<br />
+
+<img src="https://github.com/DevMountain/react-drills/blob/assets/4g.gif" />
+
+### Question #5
+
+Create an `Image` <b>functional</b> component that renders an `<img />` element. The `src` for the `<img />` should be passed down as a prop from the parent component. You can use whatever image URL you would like to or you can get a placeholder from <a href="https://placeholder.com/">Click Me!</a>
+
 ### Solution
-<details>
-<summary><code> App.js </code></summary>
 
-```javascript
+<details>
+
+<summary><code> app-5/src/App.js </code></summary>
+
+```js
 import React, { Component } from 'react';
+import logo from './logo.svg';
 import './App.css';
 import Image from './Image';
 
@@ -294,8 +289,7 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        <h1>Below is my image:</h1>
-        <Image myImage={"https://http.cat/200"}/>
+        <Image myImage={ "https://http.cat/409" } />
       </div>
     );
   }
@@ -308,165 +302,396 @@ export default App;
 </details>
 
 <details>
-<summary><code> Image.js </code></summary>
 
-```javascript
+<summary><code> app-5/src/Image.js </code></summary>
+
+```js
 import React from 'react';
 
-export default function Image(props) {
-    return (
-        <div>
-            <img src={props.myImage} alt=""/>
-        </div>
-    )
+export default function Image( props ) {
+  return (
+    <div>
+      <img src={ props.myImage } alt="" />
+    </div>
+  )
 }
 ```
 
 </details>
-</br>
 
-8. Create an app that displays your to-do list. You will need two components, your App component and a Todo component. Pass individual to-do items as props to the Todo component.
-    - To-do list on App component state.
-    - Todo component renders 1 to-do item.
+<br />
+
+<img src="https://github.com/DevMountain/react-drills/blob/assets/5.png" />
+
+### Question #6
+
+Create an app that displays a to-do list. You will need two components, the `App` component and a `Todo` <b>functional</b> component. The `App` component should be responsible for getting new tasks and storing the list of tasks. The `Todo` component should be responsible for display the tasks from the `App` component in a list-like fashion. The `App` component should pass down a `tasks array` into the `Todo` component as a prop.
 
 ### Solution
-<details>
-<summary><code> App.js </code></summary>
 
-```javascript
+<details>
+
+<summary><code> app-6/src/App.js </code></summary>
+
+```js
 import React, { Component } from 'react';
-import TodoList from './TodoList'
+import logo from './logo.svg';
 import './App.css';
+import Todo from './Todo';
 
 class App extends Component {
-  constructor(props) {
-    super(props);
+  constructor() {
+    super();
 
     this.state = {
       list: [],
       input: ''
-    }
+    };
+
+    this.handleAddTask = this.handleAddTask.bind( this );
   }
 
-  handleInputChange(value) {
-    this.setState({
-      input: value
-    })
+  handleInputChange( value ) {
+    this.setState({ input: value });
   }
-  handleAddChore(value) {
-    this.setState({
-      list: [...this.state.list, value],
-      input: ''
-    })
+
+  handleAddTask() {
+    this.setState({ 
+      list: [...this.state.list, this.state.input ], 
+      input: '' 
+    });
   }
+
   render() {
-    let list = this.state.list.map((e,i) => {
+    let list = this.state.list.map( ( element, index ) => {
       return (
-        <TodoList key={i} chore={e} />
+        <Todo key={ index } task={ element } />
       )
     })
+
     return (
       <div className="App">
         <h1>My to-do list:</h1>
+
         <div>
-          <input value={this.state.input} placeholder="Enter new chore" onChange={(e) => this.handleInputChange(e.target.value)}/>
-          <button onClick={() => this.handleAddChore(this.state.input)}>Add</button>
+          <input value={this.state.input} 
+                 placeholder="Enter new task" 
+                 onChange={ (e) => this.handleInputChange( e.target.value ) }
+          />
+
+          <button onClick={ this.handleAddTask }>Add</button>
         </div>
-        <hr/>
-        {list}
+
+        <br />
+
+        { list }
       </div>
     );
   }
 }
 
 export default App;
-
 ```
 
 </details>
 
 <details>
-<summary><code> TodoList.js </code></summary>
 
-```javascript
+<summary><code> app-6/src/Todo.js </code></summary>
+
+```js
 import React from 'react';
 
-export default function TodoList (props) {
-    return (
-        <div>
-            {props.chore}
-        </div>
-    )
+export default function Todo (props) {
+  return (
+    <p>{ props.task }</p>
+  )
 }
 ```
 
 </details>
-</br>
 
-## Set 3 (Routing)
+<br />
 
-9. Create an app that has three routes (using `react-router-dom`):
-   * home `'/'`
-   * sign up `'/signup'`
-   * details `'/details'`
+<img src="https://github.com/DevMountain/react-drills/blob/assets/6-7g.gif" />
 
-- Create a simple menu for each view that allows you to navigate between all three routes.
+### Question #7
 
-- Use any of the APIs listed in app #4 above and display the data in the details route.
-### Solution
+Create an app similiar to question #6, except this time add a new third component called `NewTask`. `NewTask` should be responsible for adding a new task to a `task array` on the `App` component. Also add a new fourth <b>functional</b> component called `List`. `List` should be responsible for display the tasks inside of a `task array` on the `App` component in a list-like fashion.
+
 <details>
-<summary><code> index.js </code></summary>
 
-```javascript
+<summary> <code> app-7/src/App.js </code> </summary>
+
+```js
+import React, { Component } from 'react';
+import logo from './logo.svg';
+import './App.css';
+import NewTask from './NewTask';
+import List from './List';
+
+class App extends Component {
+  constructor() {
+    super();
+
+    this.state = {
+      list: []
+    };
+
+    this.handleAddTask = this.handleAddTask.bind( this );
+  }
+
+  handleAddTask( task ) {
+    this.setState({ list: [ ...this.state.list, task ] });
+  }
+
+  render() {
+    return (
+      <div className="App">
+        <h1>My to-do list:</h1>
+        <NewTask add={ this.handleAddTask } />
+        <List tasks={ this.state.list } />
+      </div>
+    );
+  }
+}
+
+export default App;
+```
+
+</details>
+
+<details>
+
+<summary> <code> app-7/src/NewTask.js </code> </summary>
+
+```js
+import React, { Component } from 'react';
+
+class NewTask extends Component {
+  constructor() {
+    super();
+
+    this.state = {
+      input: ''
+    };
+
+    this.handleAdd = this.handleAdd.bind( this );
+  }
+
+  handleInputChange( value ) {
+    this.setState({ input: value });
+  }
+
+  handleAdd() {
+    this.props.add( this.state.input );
+    this.setState({ input: '' });
+  }
+
+  render() {
+    return (
+      <div>
+        <input value={ this.state.input } 
+              placeholder="Enter new task" 
+              onChange={ (e) => this.handleInputChange( e.target.value ) }
+        />
+
+        <button onClick={ this.handleAdd }>Add</button>
+      </div>
+    )
+  }
+}
+
+export default NewTask;
+```
+
+</details>
+
+<details>
+
+<summary> <code> app-7/src/List.js </code> </summary>
+
+```js
+import React from 'react';
+import Todo from './Todo';
+
+export default function List( props ) {
+  let list = props.tasks.map( ( element, index ) => {
+    return (
+      <Todo key={ index } task={ element } />
+    )
+  })
+
+  return (
+    <div>
+      { list }
+    </div>
+  )
+}
+```
+
+</details>
+
+<details>
+
+<summary> <code> app-7/src/Todo.js </code> </summary>
+
+```js
+import React from 'react';
+
+export default function Todo (props) {
+  return (
+    <p>{ props.task }</p>
+  )
+}
+```
+
+</details>
+
+<br />
+
+<img src="https://github.com/DevMountain/react-drills/blob/assets/6-7g.gif" />
+
+## Set 3 - Axios ( hitting an API ), React Lifecycle Methods
+
+### Question #8
+
+Create an app hitting an API of your choice (swapi.co, birdapi.com, pokeapi, smurfs, marvel api, etc). The API should be hit as soon as the component is finished rendering. The app should set value(s) on state based on results from the API and then show the propertie(s) on state in the DOM.
+
+The `axios` package should be used to hit an API.
+
+### Solution
+
+<details>
+
+<summary> <code> app-8/src/App.js </code> </summary>
+
+```js
+import React, { Component } from 'react';
+import logo from './logo.svg';
+import './App.css';
+
+import axios from 'axios';
+
+class App extends Component {
+  constructor() {
+    super();
+
+    this.state = {
+      lukeSkywalker: ""
+    }
+  }
+
+  componentDidMount() {
+    axios.get("https://swapi.co/api/people/1").then( response => {
+      this.setState({
+        lukeSkywalker: response.data
+      });
+    });
+  }
+
+  render() {
+    return (
+      <div className="App">
+        <h1>Name: { this.state.lukeSkywalker.name }</h1>
+        <h1>Birth Year: { this.state.lukeSkywalker.birth_year }</h1>
+        <h1>Height: { this.state.lukeSkywalker.height }</h1>
+        <h1>Eye Color: { this.state.lukeSkywalker.eye_color }</h1>
+      </div>
+    );
+  }
+}
+
+export default App;
+```
+
+</details>
+
+<br />
+
+<img src="https://github.com/DevMountain/react-drills/blob/assets/8.png" />
+
+### Extra Practice
+
+Complete the HTTP mini located at: <a href="https://github.com/DevMountain/http-mini">Click Me!</a>
+
+## Set 4 - react-router-dom ( Routing ), Axios ( hitting an API )
+
+### Question #9
+
+Create an app that has three routes (using `react-router-dom`):
+  * Component name: `Home`, Component route: `'/'`
+  * Component name: `Signup`, Component route: `'/signup'`
+  * Component name: `details`, Component route:  `'/details'`
+
+Each of these <b>functional</b> components only need a very basic template:
+
+```js
+<div>
+  <h1>This is the Home/Signup/Details page.</h1>
+</div>
+```
+
+The `App` component should render a `<nav>` element that provides links to all three routes. The `router` should be rendered underneath the `nav` element. 
+
+### Solution
+
+<details>
+
+<summary><code> app-9/src/index.js </code></summary>
+
+```js
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import registerServiceWorker from './registerServiceWorker';
 
-import {HashRouter} from 'react-router-dom';
+import { HashRouter } from 'react-router-dom';
 
 ReactDOM.render(
-    <HashRouter>
-        <App />
-    </HashRouter>
+  <HashRouter>
+    <App />
+  </HashRouter>
 , document.getElementById('root'));
-registerServiceWorker();
 
+registerServiceWorker();
 ```
 
 </details>
 
 <details>
-<summary><code> router.js </code></summary>
+
+<summary><code> app-9/src/router.js </code></summary>
 
 ```javascript
 import React from 'react';
+import { Switch, Route } from 'react-router-dom';
 
-import {Switch, Route} from 'react-router-dom';
-import Home from './components/Home';
-import Signup from './components/Signup';
-import Details from './components/Details';
+import Home from './Home';
+import Signup from './Signup';
+import Details from './Details';
 
 export default (
-        <Switch>
-            <Route exact path='/' component={Home}/>
-            <Route path='/signup' component={Signup}/>
-            <Route path='/details' component={Details}/>
-        </Switch>
+  <Switch>
+    <Route exact path='/' component={ Home } />
+    <Route path='/signup' component={ Signup } />
+    <Route path='/details' component={ Details } />
+  </Switch>
 )
 ```
 
 </details>
 
 <details>
-<summary><code> App.js </code></summary>
 
-```javascript
+<summary><code> app-9/src/App.js </code></summary>
+
+```js
 import React, { Component } from 'react';
 import './App.css';
 
-import {Link} from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import router from './router';
 
 class App extends Component {
@@ -480,127 +705,144 @@ class App extends Component {
             <Link to='/details'>Details</Link>
           </ul>
         </nav>
-        <hr/>
+
+        <br />
+
         {router}
+
       </div>
     );
   }
 }
 
 export default App;
-
 ```
 
 </details>
 
 <details>
-<summary><code> Home.js </code></summary>
 
-```javascript
+<summary><code> app-9/src/Home.js </code></summary>
+
+```js
 import React from 'react';
 
 export default function Home() {
-    return (
-        <div>
-            <h1>This is the home page.</h1>
-        </div>
-    )
+  return (
+    <div>
+      <h1>This is the home page.</h1>
+    </div>
+  )
 }
 ```
 
 </details>
 
 <details>
-<summary><code> Signup.js </code></summary>
 
-```javascript
+<summary><code> app-9/src/Signup.js </code></summary>
+
+```js
 import React from 'react';
 
 export default function Signup() {
-    return (
-        <div>
-            <h1>This is the signup page.</h1>
-        </div>
-    )
+  return (
+    <div>
+      <h1>This is the signup page.</h1>
+    </div>
+  )
 }
 ```
 
 </details>
 
 <details>
-<summary><code> Details.js </code></summary>
 
-```javascript
+<summary><code> app-9/src/Details.js </code></summary>
+
+```js
 import React from 'react';
 
-export default function Details() {
-    return (
-        <div>
-            <h1>This is the details page.</h1>
-        </div>
-    )
+export default function Signup() {
+  return (
+    <div>
+      <h1>This is the details page.</h1>
+    </div>
+  )
 }
 ```
 
 </details>
-</br>
 
-10. Create an app that has two routes (using `react-router-dom`):
-      * products `'/'`
-      * details `'/details/:id'`
-  - Hitting an api, show all products/info/people (depends on the api you hit) on the `products` route.
-  - When you click on a specific product, show the details in the `details` route. 
+<br />
+
+<img src="https://github.com/DevMountain/react-drills/blob/assets/9g.gif" />
+
+### Question #10
+
+Create an app that has two routes (using `react-router-dom`):
+  * Component name: `Products`, Component route: `'/'`
+  * Component name: `Details`, Component route: `'/details/:id'`
+
+The `App` component should render the `router`. The `Products` component should hit an API of your choice that shows a list of products/info/people/cars. When a user clicks on one of the products/info/people/cars it should route to `Details` component with the `id` as a route parameter. The `Details` component should hit an API of your choice to get more data for a single product/info/person/car.
+
+In the solution code to follow, we used the DevMountain Practice API server.
+
 ### Solution
-<details>
-<summary><code> index.js </code></summary>
 
-```javascript
+<details>
+
+<summary><code> app-10/src/index.js </code></summary>
+
+```js
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import registerServiceWorker from './registerServiceWorker';
 
-import {HashRouter} from 'react-router-dom';
+import { HashRouter } from 'react-router-dom';
 
 ReactDOM.render(
-    <HashRouter>
-        <App />
-    </HashRouter>
-    , document.getElementById('root'));
-registerServiceWorker();
+  <HashRouter>
+    <App />
+  </HashRouter>
+, document.getElementById('root'));
 
+registerServiceWorker();
 ```
 
 </details>
 
 <details>
-<summary><code> router.js </code></summary>
 
-```javascript
+<summary><code> app-10/src/router.js </code></summary>
+
+```js
 import React from 'react';
+import { Switch, Route } from 'react-router-dom';
 
-import {Switch, Route} from 'react-router-dom';
-import Products from './components/Products';
-import Details from './components/Details';
+import Products from './Products';
+import Details from './Details';
 
 export default (
-    <Switch>
-        <Route exact path='/' component={Products}/>
-        <Route path='/details/:id' component={Details}/>
-    </Switch>
+  <Switch>
+    <Route exact path='/' component={ Products } />
+    <Route path='/details/:id' component={ Details } />
+  </Switch>
 )
 ```
 
 </details>
 
 <details>
-<summary><code> App.js </code></summary>
 
-```javascript
+<summary><code> app-10/src/App.js </code></summary>
+
+```js
 import React, { Component } from 'react';
+import logo from './logo.svg';
 import './App.css';
-
 import router from './router';
 
 class App extends Component {
@@ -614,57 +856,52 @@ class App extends Component {
 }
 
 export default App;
-
 ```
 
 </details>
 
 <details>
-<summary><code> Products.js </code></summary>
 
-```javascript
+<summary><code> app-10/src/Products.js </code></summary>
+
+```js
 import React, { Component } from 'react';
-
-import {Link} from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import axios from 'axios';
 
 class Products extends Component {
-    constructor() {
-        super();
+  constructor() {
+    super();
 
-        this.state = {
-            products: []
-        }
+    this.state = {
+      products: []
     }
+  }
 
-    componentDidMount() {
-        axios.get('https://practiceapi.devmountain.com/products')
-        .then((response) => {
-            console.log(response.data);
-            this.setState({
-                products: response.data
-            })
-        })
-    }
+  componentDidMount() {
+    axios.get('https://practiceapi.devmountain.com/products').then( response => {
+      this.setState({ products: response.data });
+    })
+  }
 
-    render() {
-        let products = this.state.products.map((e,i) => {
-            if(e.image) {
-                return(
-                    <Link to={`/details/${e.id}`} key={i}>
-                        <img className="product-image" src={e.image}/>
-                    </Link>
-                )
-            }
-            
-        })
+  render() {
+    let products = this.state.products.map( ( product, index ) => {
+      if ( product.image ) {
         return (
-            <div>
-                <h1>Products</h1>
-                {products}
-            </div>
+          <Link key={ index } to={ `/details/${product.id}` }>
+            <img width="200" src={ product.image } />
+          </Link>
         )
-    }
+      }
+    });
+
+    return (
+      <div>
+        <h1>Products</h1>
+        { products }
+      </div>
+    )
+  }
 }
 
 export default Products;
@@ -673,47 +910,47 @@ export default Products;
 </details>
 
 <details>
-<summary><code> Details.js </code></summary>
 
-```javascript
-import React, {Component} from 'react';
+<summary><code> app-10/src/Details.js </code></summary>
 
+```js
+import React, { Component } from 'react';
 import axios from 'axios';
 
 class Details extends Component {
-    constructor(props) {
-        super(props);
+  constructor() {
+    super();
 
-        this.state = {
-            item: {}
-        }
+    this.state = {
+      item: {}
     }
+  }
 
-    componentDidMount() {
-        axios.get(`https://practiceapi.devmountain.com/products/${this.props.match.params.id}`)
-        .then((response) => {
-            this.setState({
-                item: response.data
-            })
-        })
-    }
-    render() {
-        return (
-            <div>
-                <h2>{this.state.item.title}</h2>
-                <img className="product-image" src={this.state.item.image}/>
-                <h4>{`Price: $${this.state.item.price}.00`}</h4>
-            </div>
-        )
-    }
+  componentDidMount() {
+    axios.get(`https://practiceapi.devmountain.com/products/${this.props.match.params.id}`).then( response => {
+      this.setState({ item: response.data });
+    })
+  }
+
+  render() {
+    return (
+      <div>
+        <h2>{ this.state.item.title }</h2>
+        <img width="200" src={ this.state.item.image }/>
+        <h4>{`Price: $${ this.state.item.price }.00`}</h4>
+      </div>
+    )
+  }
 }
 
 export default Details;
 ```
 
 </details>
-</br>
 
+<br />
+
+<img src="https://github.com/DevMountain/react-drills/blob/assets/10g.gif" />
 
 ## Contributions
 
