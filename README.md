@@ -4,7 +4,7 @@
 
 This project is geared towards helping you improve your React skills. We will provided minimal guidance compared to most afternoon projects that offer detailed instructions. Therefore, this project can be used as a good check if you are truly understanding and implementing React on your own. When you first go through these set of problems, you may need to look at solutions for help. The goal, however, should be to get to the point where you can complete all sets of problems without any help from solutions and/or mentors.
 
-The solutions provided in this project are just one way you can accomplish the project. If you are curious if your solution is "correct", you can ask a mentor to compare your answer to the ones we are providing. 
+The solutions provided in this project are just one way you can accomplish the project. If you are curious if your solution is "correct", you can ask a mentor to compare your answer to the ones we are providing.
 
 ## Challenge
 
@@ -16,8 +16,8 @@ Good Luck!
 
 To help speed up the process of moving from question to question we have provided a bunch of `app-#/` folders that have been created using the `create-react-app` CLI. Therefore, if you are currently on question 1, you will put your work inside of `app-1`. If you are currently on question 4, you will put your work inside of `app-4`.
 
-* Run `npm install` in each `app-#/` folder before starting the questions.
-  * You can either run `npm install` for each `app-#/` before starting question one or just remember to run `npm install` as you move from question to question.
+- Run `npm install` in each `app-#/` folder before starting the questions.
+  - You can either run `npm install` for each `app-#/` before starting question one or just remember to run `npm install` as you move from question to question.
 
 You can then test your work for each question, as you develope a solution, by running `npm run start`.
 
@@ -34,9 +34,9 @@ Create a basic react app where you type in a text box and it shows up as text on
 <summary> <code> app-1/src/App.js </code> </summary>
 
 ```js
-import React, { Component } from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { Component } from "react";
+import logo from "./logo.svg";
+import "./App.css";
 
 class App extends Component {
   constructor() {
@@ -44,18 +44,18 @@ class App extends Component {
 
     this.state = {
       message: ""
-    }
+    };
   }
 
-  handleChange( value ) {
-    this.setState({ message: value })
+  handleChange(value) {
+    this.setState({ message: value });
   }
 
   render() {
     return (
       <div className="App">
-        <input onChange={ (e) => this.handleChange( e.target.value ) } type="text" />
-        <p>{ this.state.message }</p>
+        <input onChange={e => this.handleChange(e.target.value)} type="text" />
+        <p>{this.state.message}</p>
       </div>
     );
   }
@@ -81,37 +81,25 @@ Create an app where there is an array of data on state that is then shown on the
 <summary> <code> app-2/src/App.js </code> </summary>
 
 ```js
-import React, { Component } from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { Component } from "react";
+import logo from "./logo.svg";
+import "./App.css";
 
 class App extends Component {
   constructor() {
     super();
 
     this.state = {
-      foods: [
-        "spaghetti",
-        "ice cream",
-        "sushi",
-        "bologna",
-        "cheese"
-      ]
-    }
+      foods: ["spaghetti", "ice cream", "sushi", "bologna", "cheese"]
+    };
   }
 
   render() {
-    let foodsToDisplay = this.state.foods.map( (element, index) => {
-      return (
-        <h2 key={ index }>{ element }</h2>
-      )
-    })
+    let foodsToDisplay = this.state.foods.map((element, index) => {
+      return <h2 key={index}>{element}</h2>;
+    });
 
-    return (
-      <div className="App">
-        { foodsToDisplay }
-      </div>
-    );
+    return <div className="App">{foodsToDisplay}</div>;
   }
 }
 
@@ -126,7 +114,7 @@ export default App;
 
 ### Question #3
 
-Create an app where there is an array of data on state that is then shown on the DOM as a list. There should also be a way for the user to filter what's shown in the list. The array of data can be as simple as an array of strings. The list can be as simple as a list of `<h2>` elements. 
+Create an app where there is an array of data on state that is then shown on the DOM as a list. There should also be a way for the user to filter what's shown in the list. The array of data can be as simple as an array of strings. The list can be as simple as a list of `<h2>` elements.
 
 ### Solution
 
@@ -135,9 +123,9 @@ Create an app where there is an array of data on state that is then shown on the
 <summary> <code> app-3/src/App.js </code> </summary>
 
 ```js
-import React, { Component } from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { Component } from "react";
+import logo from "./logo.svg";
+import "./App.css";
 
 class App extends Component {
   constructor() {
@@ -145,31 +133,27 @@ class App extends Component {
 
     this.state = {
       filterString: "",
-      foods: [
-        "spaghetti",
-        "ice cream",
-        "sushi",
-        "bologna",
-        "cheese"
-      ]
-    }
+      foods: ["spaghetti", "ice cream", "sushi", "bologna", "cheese"]
+    };
   }
 
-  handleChange( filter ) {
-    this.setState({ filterString: filter })
+  handleChange(filter) {
+    this.setState({ filterString: filter });
   }
 
   render() {
-    let foodsToDisplay = this.state.foods.filter( (element, index) => {
-      return element.includes( this.state.filterString );
-    }).map( (element, index) => {
-      return <h2 key={ index }>{ element }</h2>
-    })
+    let foodsToDisplay = this.state.foods
+      .filter((element, index) => {
+        return element.includes(this.state.filterString);
+      })
+      .map((element, index) => {
+        return <h2 key={index}>{element}</h2>;
+      });
 
     return (
       <div className="App">
-        <input onChange={ (e) => this.handleChange( e.target.value ) } type="text" />
-        { foodsToDisplay }
+        <input onChange={e => this.handleChange(e.target.value)} type="text" />
+        {foodsToDisplay}
       </div>
     );
   }
@@ -197,11 +181,11 @@ Create a `Login` component that has two text inputs, one for a `username` and on
 <summary><code> app-4/src/App.js </code></summary>
 
 ```js
-import React, { Component } from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { Component } from "react";
+import logo from "./logo.svg";
+import "./App.css";
 
-import Login from './Login';
+import Login from "./Login";
 
 class App extends Component {
   render() {
@@ -223,7 +207,7 @@ export default App;
 <summary><code> app-4/src/Login.js </code></summary>
 
 ```js
-import React, { Component } from 'react';
+import React, { Component } from "react";
 
 class Login extends Component {
   constructor() {
@@ -234,29 +218,35 @@ class Login extends Component {
       password: ""
     };
 
-    this.handleLogin = this.handleLogin.bind( this );
+    this.handleLogin = this.handleLogin.bind(this);
   }
 
-  handleUsernameChange( name ) {
+  handleUsernameChange(name) {
     this.setState({ username: name });
   }
 
-  handlePasswordChange( pass ) {
+  handlePasswordChange(pass) {
     this.setState({ password: pass });
   }
 
   handleLogin() {
-    alert(`Username: ${ this.state.username } Password: ${ this.state.password }`);
+    alert(`Username: ${this.state.username} Password: ${this.state.password}`);
   }
 
   render() {
     return (
       <div>
-        <input onChange={ (e) => this.handleUsernameChange( e.target.value ) } type="text"/>
-        <input onChange={ (e) => this.handlePasswordChange( e.target.value ) } type="text"/>
-        <button onClick={ this.handleLogin }>Login</button>
+        <input
+          onChange={e => this.handleUsernameChange(e.target.value)}
+          type="text"
+        />
+        <input
+          onChange={e => this.handlePasswordChange(e.target.value)}
+          type="text"
+        />
+        <button onClick={this.handleLogin}>Login</button>
       </div>
-    )
+    );
   }
 }
 
@@ -280,23 +270,22 @@ Create an `Image` <b>functional</b> component that renders an `<img />` element.
 <summary><code> app-5/src/App.js </code></summary>
 
 ```js
-import React, { Component } from 'react';
-import logo from './logo.svg';
-import './App.css';
-import Image from './Image';
+import React, { Component } from "react";
+import logo from "./logo.svg";
+import "./App.css";
+import Image from "./Image";
 
 class App extends Component {
   render() {
     return (
       <div className="App">
-        <Image myImage={ "https://http.cat/409" } />
+        <Image myImage={"https://http.cat/409"} />
       </div>
     );
   }
 }
 
 export default App;
-
 ```
 
 </details>
@@ -306,14 +295,14 @@ export default App;
 <summary><code> app-5/src/Image.js </code></summary>
 
 ```js
-import React from 'react';
+import React from "react";
 
-export default function Image( props ) {
+export default function Image(props) {
   return (
     <div>
-      <img src={ props.myImage } alt="" />
+      <img src={props.myImage} alt="" />
     </div>
-  )
+  );
 }
 ```
 
@@ -325,7 +314,7 @@ export default function Image( props ) {
 
 ### Question #6
 
-Create an app that displays a to-do list. You will need two components, the `App` component and a `Todo` <b>functional</b> component. The `App` component should be responsible for getting new tasks and storing the list of tasks. The `Todo` component should be responsible for display the tasks from the `App` component in a list-like fashion. The `App` component should pass down a `tasks array` into the `Todo` component as a prop.
+Create an app that displays a to-do list. You will need two components, the `App` component and a `Todo` <b>functional</b> component. The `App` component should be responsible for getting new tasks and storing the list of tasks. The `Todo` component should be responsible for displaying the individual tasks from the `App` component. The `App` component should create a list of 'Todo' components passing down a `task` into the `Todo` component as a prop and display the list.
 
 ### Solution
 
@@ -334,10 +323,10 @@ Create an app that displays a to-do list. You will need two components, the `App
 <summary><code> app-6/src/App.js </code></summary>
 
 ```js
-import React, { Component } from 'react';
-import logo from './logo.svg';
-import './App.css';
-import Todo from './Todo';
+import React, { Component } from "react";
+import logo from "./logo.svg";
+import "./App.css";
+import Todo from "./Todo";
 
 class App extends Component {
   constructor() {
@@ -345,46 +334,45 @@ class App extends Component {
 
     this.state = {
       list: [],
-      input: ''
+      input: ""
     };
 
-    this.handleAddTask = this.handleAddTask.bind( this );
+    this.handleAddTask = this.handleAddTask.bind(this);
   }
 
-  handleInputChange( value ) {
+  handleInputChange(value) {
     this.setState({ input: value });
   }
 
   handleAddTask() {
-    this.setState({ 
-      list: [...this.state.list, this.state.input ], 
-      input: '' 
+    this.setState({
+      list: [...this.state.list, this.state.input],
+      input: ""
     });
   }
 
   render() {
-    let list = this.state.list.map( ( element, index ) => {
-      return (
-        <Todo key={ index } task={ element } />
-      )
-    })
+    let list = this.state.list.map((element, index) => {
+      return <Todo key={index} task={element} />;
+    });
 
     return (
       <div className="App">
         <h1>My to-do list:</h1>
 
         <div>
-          <input value={this.state.input} 
-                 placeholder="Enter new task" 
-                 onChange={ (e) => this.handleInputChange( e.target.value ) }
+          <input
+            value={this.state.input}
+            placeholder="Enter new task"
+            onChange={e => this.handleInputChange(e.target.value)}
           />
 
-          <button onClick={ this.handleAddTask }>Add</button>
+          <button onClick={this.handleAddTask}>Add</button>
         </div>
 
         <br />
 
-        { list }
+        {list}
       </div>
     );
   }
@@ -400,12 +388,10 @@ export default App;
 <summary><code> app-6/src/Todo.js </code></summary>
 
 ```js
-import React from 'react';
+import React from "react";
 
-export default function Todo (props) {
-  return (
-    <p>{ props.task }</p>
-  )
+export default function Todo(props) {
+  return <p>{props.task}</p>;
 }
 ```
 
@@ -424,11 +410,11 @@ Create an app similiar to question #6, except this time add a new third componen
 <summary> <code> app-7/src/App.js </code> </summary>
 
 ```js
-import React, { Component } from 'react';
-import logo from './logo.svg';
-import './App.css';
-import NewTask from './NewTask';
-import List from './List';
+import React, { Component } from "react";
+import logo from "./logo.svg";
+import "./App.css";
+import NewTask from "./NewTask";
+import List from "./List";
 
 class App extends Component {
   constructor() {
@@ -438,19 +424,19 @@ class App extends Component {
       list: []
     };
 
-    this.handleAddTask = this.handleAddTask.bind( this );
+    this.handleAddTask = this.handleAddTask.bind(this);
   }
 
-  handleAddTask( task ) {
-    this.setState({ list: [ ...this.state.list, task ] });
+  handleAddTask(task) {
+    this.setState({ list: [...this.state.list, task] });
   }
 
   render() {
     return (
       <div className="App">
         <h1>My to-do list:</h1>
-        <NewTask add={ this.handleAddTask } />
-        <List tasks={ this.state.list } />
+        <NewTask add={this.handleAddTask} />
+        <List tasks={this.state.list} />
       </div>
     );
   }
@@ -466,39 +452,40 @@ export default App;
 <summary> <code> app-7/src/NewTask.js </code> </summary>
 
 ```js
-import React, { Component } from 'react';
+import React, { Component } from "react";
 
 class NewTask extends Component {
   constructor() {
     super();
 
     this.state = {
-      input: ''
+      input: ""
     };
 
-    this.handleAdd = this.handleAdd.bind( this );
+    this.handleAdd = this.handleAdd.bind(this);
   }
 
-  handleInputChange( value ) {
+  handleInputChange(value) {
     this.setState({ input: value });
   }
 
   handleAdd() {
-    this.props.add( this.state.input );
-    this.setState({ input: '' });
+    this.props.add(this.state.input);
+    this.setState({ input: "" });
   }
 
   render() {
     return (
       <div>
-        <input value={ this.state.input } 
-              placeholder="Enter new task" 
-              onChange={ (e) => this.handleInputChange( e.target.value ) }
+        <input
+          value={this.state.input}
+          placeholder="Enter new task"
+          onChange={e => this.handleInputChange(e.target.value)}
         />
 
-        <button onClick={ this.handleAdd }>Add</button>
+        <button onClick={this.handleAdd}>Add</button>
       </div>
-    )
+    );
   }
 }
 
@@ -512,21 +499,15 @@ export default NewTask;
 <summary> <code> app-7/src/List.js </code> </summary>
 
 ```js
-import React from 'react';
-import Todo from './Todo';
+import React from "react";
+import Todo from "./Todo";
 
-export default function List( props ) {
-  let list = props.tasks.map( ( element, index ) => {
-    return (
-      <Todo key={ index } task={ element } />
-    )
-  })
+export default function List(props) {
+  let list = props.tasks.map((element, index) => {
+    return <Todo key={index} task={element} />;
+  });
 
-  return (
-    <div>
-      { list }
-    </div>
-  )
+  return <div>{list}</div>;
 }
 ```
 
@@ -537,12 +518,10 @@ export default function List( props ) {
 <summary> <code> app-7/src/Todo.js </code> </summary>
 
 ```js
-import React from 'react';
+import React from "react";
 
-export default function Todo (props) {
-  return (
-    <p>{ props.task }</p>
-  )
+export default function Todo(props) {
+  return <p>{props.task}</p>;
 }
 ```
 
@@ -567,11 +546,11 @@ The `axios` package should be used to hit an API.
 <summary> <code> app-8/src/App.js </code> </summary>
 
 ```js
-import React, { Component } from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { Component } from "react";
+import logo from "./logo.svg";
+import "./App.css";
 
-import axios from 'axios';
+import axios from "axios";
 
 class App extends Component {
   constructor() {
@@ -579,11 +558,11 @@ class App extends Component {
 
     this.state = {
       lukeSkywalker: ""
-    }
+    };
   }
 
   componentDidMount() {
-    axios.get("https://swapi.co/api/people/1").then( response => {
+    axios.get("https://swapi.co/api/people/1").then(response => {
       this.setState({
         lukeSkywalker: response.data
       });
@@ -593,10 +572,10 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        <h1>Name: { this.state.lukeSkywalker.name }</h1>
-        <h1>Birth Year: { this.state.lukeSkywalker.birth_year }</h1>
-        <h1>Height: { this.state.lukeSkywalker.height }</h1>
-        <h1>Eye Color: { this.state.lukeSkywalker.eye_color }</h1>
+        <h1>Name: {this.state.lukeSkywalker.name}</h1>
+        <h1>Birth Year: {this.state.lukeSkywalker.birth_year}</h1>
+        <h1>Height: {this.state.lukeSkywalker.height}</h1>
+        <h1>Eye Color: {this.state.lukeSkywalker.eye_color}</h1>
       </div>
     );
   }
@@ -620,9 +599,10 @@ Complete the HTTP mini located at: <a href="https://github.com/DevMountain/http-
 ### Question #9
 
 Create an app that has three routes (using `react-router-dom`):
-  * Component name: `Home`, Component route: `'/'`
-  * Component name: `Signup`, Component route: `'/signup'`
-  * Component name: `details`, Component route:  `'/details'`
+
+- Component name: `Home`, Component route: `'/'`
+- Component name: `Signup`, Component route: `'/signup'`
+- Component name: `details`, Component route: `'/details'`
 
 Each of these <b>functional</b> components only need a very basic template:
 
@@ -632,7 +612,7 @@ Each of these <b>functional</b> components only need a very basic template:
 </div>
 ```
 
-The `App` component should render a `<nav>` element that provides links to all three routes. The `router` should be rendered underneath the `nav` element. 
+The `App` component should render a `<nav>` element that provides links to all three routes. The `router` should be rendered underneath the `nav` element.
 
 ### Solution
 
@@ -641,19 +621,20 @@ The `App` component should render a `<nav>` element that provides links to all t
 <summary><code> app-9/src/index.js </code></summary>
 
 ```js
-import React from 'react';
-import ReactDOM from 'react-dom';
-import './index.css';
-import App from './App';
-import registerServiceWorker from './registerServiceWorker';
+import React from "react";
+import ReactDOM from "react-dom";
+import "./index.css";
+import App from "./App";
+import registerServiceWorker from "./registerServiceWorker";
 
-import { HashRouter } from 'react-router-dom';
+import { HashRouter } from "react-router-dom";
 
 ReactDOM.render(
   <HashRouter>
     <App />
-  </HashRouter>
-, document.getElementById('root'));
+  </HashRouter>,
+  document.getElementById("root")
+);
 
 registerServiceWorker();
 ```
@@ -665,20 +646,20 @@ registerServiceWorker();
 <summary><code> app-9/src/router.js </code></summary>
 
 ```javascript
-import React from 'react';
-import { Switch, Route } from 'react-router-dom';
+import React from "react";
+import { Switch, Route } from "react-router-dom";
 
-import Home from './Home';
-import Signup from './Signup';
-import Details from './Details';
+import Home from "./Home";
+import Signup from "./Signup";
+import Details from "./Details";
 
 export default (
   <Switch>
-    <Route exact path='/' component={ Home } />
-    <Route path='/signup' component={ Signup } />
-    <Route path='/details' component={ Details } />
+    <Route exact path="/" component={Home} />
+    <Route path="/signup" component={Signup} />
+    <Route path="/details" component={Details} />
   </Switch>
-)
+);
 ```
 
 </details>
@@ -688,11 +669,11 @@ export default (
 <summary><code> app-9/src/App.js </code></summary>
 
 ```js
-import React, { Component } from 'react';
-import './App.css';
+import React, { Component } from "react";
+import "./App.css";
 
-import { Link } from 'react-router-dom';
-import router from './router';
+import { Link } from "react-router-dom";
+import router from "./router";
 
 class App extends Component {
   render() {
@@ -700,16 +681,15 @@ class App extends Component {
       <div className="App">
         <nav>
           <ul>
-            <Link to='/'>Home</Link>
-            <Link to='/signup'>Signup</Link>
-            <Link to='/details'>Details</Link>
+            <Link to="/">Home</Link>
+            <Link to="/signup">Signup</Link>
+            <Link to="/details">Details</Link>
           </ul>
         </nav>
 
         <br />
 
         {router}
-
       </div>
     );
   }
@@ -725,14 +705,14 @@ export default App;
 <summary><code> app-9/src/Home.js </code></summary>
 
 ```js
-import React from 'react';
+import React from "react";
 
 export default function Home() {
   return (
     <div>
       <h1>This is the home page.</h1>
     </div>
-  )
+  );
 }
 ```
 
@@ -743,14 +723,14 @@ export default function Home() {
 <summary><code> app-9/src/Signup.js </code></summary>
 
 ```js
-import React from 'react';
+import React from "react";
 
 export default function Signup() {
   return (
     <div>
       <h1>This is the signup page.</h1>
     </div>
-  )
+  );
 }
 ```
 
@@ -761,14 +741,14 @@ export default function Signup() {
 <summary><code> app-9/src/Details.js </code></summary>
 
 ```js
-import React from 'react';
+import React from "react";
 
 export default function Signup() {
   return (
     <div>
       <h1>This is the details page.</h1>
     </div>
-  )
+  );
 }
 ```
 
@@ -781,8 +761,9 @@ export default function Signup() {
 ### Question #10
 
 Create an app that has two routes (using `react-router-dom`):
-  * Component name: `Products`, Component route: `'/'`
-  * Component name: `Details`, Component route: `'/details/:id'`
+
+- Component name: `Products`, Component route: `'/'`
+- Component name: `Details`, Component route: `'/details/:id'`
 
 The `App` component should render the `router`. The `Products` component should hit an API of your choice that shows a list of products/info/people/cars. When a user clicks on one of the products/info/people/cars it should route to `Details` component with the `id` as a route parameter. The `Details` component should hit an API of your choice to get more data for a single product/info/person/car.
 
@@ -795,19 +776,20 @@ In the solution code to follow, we used the DevMountain Practice API server.
 <summary><code> app-10/src/index.js </code></summary>
 
 ```js
-import React from 'react';
-import ReactDOM from 'react-dom';
-import './index.css';
-import App from './App';
-import registerServiceWorker from './registerServiceWorker';
+import React from "react";
+import ReactDOM from "react-dom";
+import "./index.css";
+import App from "./App";
+import registerServiceWorker from "./registerServiceWorker";
 
-import { HashRouter } from 'react-router-dom';
+import { HashRouter } from "react-router-dom";
 
 ReactDOM.render(
   <HashRouter>
     <App />
-  </HashRouter>
-, document.getElementById('root'));
+  </HashRouter>,
+  document.getElementById("root")
+);
 
 registerServiceWorker();
 ```
@@ -819,18 +801,18 @@ registerServiceWorker();
 <summary><code> app-10/src/router.js </code></summary>
 
 ```js
-import React from 'react';
-import { Switch, Route } from 'react-router-dom';
+import React from "react";
+import { Switch, Route } from "react-router-dom";
 
-import Products from './Products';
-import Details from './Details';
+import Products from "./Products";
+import Details from "./Details";
 
 export default (
   <Switch>
-    <Route exact path='/' component={ Products } />
-    <Route path='/details/:id' component={ Details } />
+    <Route exact path="/" component={Products} />
+    <Route path="/details/:id" component={Details} />
   </Switch>
-)
+);
 ```
 
 </details>
@@ -840,18 +822,14 @@ export default (
 <summary><code> app-10/src/App.js </code></summary>
 
 ```js
-import React, { Component } from 'react';
-import logo from './logo.svg';
-import './App.css';
-import router from './router';
+import React, { Component } from "react";
+import logo from "./logo.svg";
+import "./App.css";
+import router from "./router";
 
 class App extends Component {
   render() {
-    return (
-      <div className="App">
-        {router}
-      </div>
-    );
+    return <div className="App">{router}</div>;
   }
 }
 
@@ -865,9 +843,9 @@ export default App;
 <summary><code> app-10/src/Products.js </code></summary>
 
 ```js
-import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
-import axios from 'axios';
+import React, { Component } from "react";
+import { Link } from "react-router-dom";
+import axios from "axios";
 
 class Products extends Component {
   constructor() {
@@ -875,32 +853,32 @@ class Products extends Component {
 
     this.state = {
       products: []
-    }
+    };
   }
 
   componentDidMount() {
-    axios.get('https://practiceapi.devmountain.com/products').then( response => {
+    axios.get("https://practiceapi.devmountain.com/products").then(response => {
       this.setState({ products: response.data });
-    })
+    });
   }
 
   render() {
-    let products = this.state.products.map( ( product, index ) => {
-      if ( product.image ) {
+    let products = this.state.products.map((product, index) => {
+      if (product.image) {
         return (
-          <Link key={ index } to={ `/details/${product.id}` }>
-            <img width="200" src={ product.image } />
+          <Link key={index} to={`/details/${product.id}`}>
+            <img width="200" src={product.image} />
           </Link>
-        )
+        );
       }
     });
 
     return (
       <div>
         <h1>Products</h1>
-        { products }
+        {products}
       </div>
-    )
+    );
   }
 }
 
@@ -914,8 +892,8 @@ export default Products;
 <summary><code> app-10/src/Details.js </code></summary>
 
 ```js
-import React, { Component } from 'react';
-import axios from 'axios';
+import React, { Component } from "react";
+import axios from "axios";
 
 class Details extends Component {
   constructor() {
@@ -923,23 +901,29 @@ class Details extends Component {
 
     this.state = {
       item: {}
-    }
+    };
   }
 
   componentDidMount() {
-    axios.get(`https://practiceapi.devmountain.com/products/${this.props.match.params.id}`).then( response => {
-      this.setState({ item: response.data });
-    })
+    axios
+      .get(
+        `https://practiceapi.devmountain.com/products/${
+          this.props.match.params.id
+        }`
+      )
+      .then(response => {
+        this.setState({ item: response.data });
+      });
   }
 
   render() {
     return (
       <div>
-        <h2>{ this.state.item.title }</h2>
-        <img width="200" src={ this.state.item.image }/>
-        <h4>{`Price: $${ this.state.item.price }.00`}</h4>
+        <h2>{this.state.item.title}</h2>
+        <img width="200" src={this.state.item.image} />
+        <h4>{`Price: $${this.state.item.price}.00`}</h4>
       </div>
-    )
+    );
   }
 }
 
