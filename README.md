@@ -261,7 +261,7 @@ export default Login;
 
 ### Question #5
 
-Create an `Image` <b>functional</b> component that renders an `<img />` element. The `src` for the `<img />` should be passed down as a prop from the parent component. You can use whatever image URL you would like to or you can get a placeholder from <a href="https://placeholder.com/">Click Me!</a>
+Create an `Image` component that renders an `<img />` element. The `src` for the `<img />` should be passed down as a prop from the parent component. You can use whatever image URL you would like to or you can get a placeholder from <a href="https://placeholder.com/">Click Me!</a>
 
 ### Solution
 
@@ -295,14 +295,17 @@ export default App;
 <summary><code> app-5/src/Image.js </code></summary>
 
 ```js
-import React from "react";
+import React, {Component} from 'react'
 
-export default function Image(props) {
-  return (
-    <div>
-      <img src={props.myImage} alt="" />
-    </div>
-  );
+export default class Image extends Component {
+  render() {
+    return (
+      <div>
+        <img src={this.props.url} />
+        <caption>Error 599</caption>
+      </div>
+    )
+  }
 }
 ```
 
@@ -314,7 +317,7 @@ export default function Image(props) {
 
 ### Question #6
 
-Create an app that displays a to-do list. You will need two components, the `App` component and a `Todo` <b>functional</b> component. The `App` component should be responsible for getting new tasks and storing the list of tasks. The `Todo` component should be responsible for displaying the individual tasks from the `App` component. The `App` component should create a list of 'Todo' components passing down a `task` into the `Todo` component as a prop and display the list.
+Create an app that displays a to-do list. You will need two components, the `App` component and a `Todo` component. The `App` component should be responsible for getting new tasks and storing the list of tasks. The `Todo` component should be responsible for displaying the individual tasks from the `App` component. The `App` component should create a list of 'Todo' components passing down a `task` into the `Todo` component as a prop and display the list.
 
 ### Solution
 
@@ -388,10 +391,12 @@ export default App;
 <summary><code> app-6/src/Todo.js </code></summary>
 
 ```js
-import React from "react";
+import React, {Component} from 'react';
 
-export default function Todo(props) {
-  return <p>{props.task}</p>;
+export default class ToDo extends Component {
+  render() {
+    return <p>{props.task}</p>;
+  }
 }
 ```
 
@@ -403,7 +408,7 @@ export default function Todo(props) {
 
 ### Question #7
 
-Create an app similiar to question #6, except this time add a new third component called `NewTask`. `NewTask` should be responsible for adding a new task to a `task array` on the `App` component. Also add a new fourth <b>functional</b> component called `List`. `List` should be responsible for display the tasks inside of a `task array` on the `App` component in a list-like fashion.
+Create an app similiar to question #6, except this time add a new third component called `NewTask`. `NewTask` should be responsible for adding a new task to a `task array` on the `App` component. Also add a new fourth component called `List`. `List` should be responsible for display the tasks inside of a `task array` on the `App` component in a list-like fashion.
 
 <details>
 
@@ -499,15 +504,17 @@ export default NewTask;
 <summary> <code> app-7/src/List.js </code> </summary>
 
 ```js
-import React from "react";
+import React, {Component} from 'react';
 import Todo from "./Todo";
 
-export default function List(props) {
-  let list = props.tasks.map((element, index) => {
-    return <Todo key={index} task={element} />;
-  });
-
-  return <div>{list}</div>;
+export default class List extends Comonent {
+  render() {
+    let list = this.props.tasks.map((element, index) => {
+      return <Todo key={index} task={element} />;
+    });
+    
+    return <div>{list}</div>;
+  }
 }
 ```
 
@@ -518,10 +525,12 @@ export default function List(props) {
 <summary> <code> app-7/src/Todo.js </code> </summary>
 
 ```js
-import React from "react";
+import React, {Component} from 'react';
 
-export default function Todo(props) {
-  return <p>{props.task}</p>;
+export default class Todo extends Component {
+  render() {
+    return <p>{this.props.task}</p>;
+  }
 }
 ```
 
@@ -604,7 +613,7 @@ Create an app that has three routes (using `react-router-dom`):
 - Component name: `Signup`, Component route: `'/signup'`
 - Component name: `details`, Component route: `'/details'`
 
-Each of these <b>functional</b> components only need a very basic template:
+Each of these components only need a very basic template:
 
 ```js
 <div>
