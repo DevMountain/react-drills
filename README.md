@@ -14,16 +14,16 @@ Good Luck!
 
 ## Setup
 
-To help speed up the process of moving from question to question we have provided a bunch of `app-#/` folders that have been created using the `create-react-app` CLI. Therefore, if you are currently on question 1, you will put your work inside of `app-1`. If you are currently on question 4, you will put your work inside of `app-4`.
+To help speed up the process of moving from app to app we have provided a bunch of `app-#/` folders that have been created using the `create-react-app` CLI. That way you just have to run `npm install` instead of waiting for `create-react-app`.
 
-- Run `npm install` in each `app-#/` folder before starting the questions.
-  - You can either run `npm install` for each `app-#/` before starting question one or just remember to run `npm install` as you move from question to question.
+- Run `npm install` in each `app-#/` folder before starting the
+  - You can either run `npm install` for each `app-#/` before starting app one or just remember to run `npm install` as you move from app to app
 
-You can then test your work for each question, as you develope a solution, by running `npm run start`.
+You can then test your work for each app, as you develope a solution, by running `npm run start` from each `app-#/` folder.
 
 ## Set 1 - State, Class Methods, Capturing User Input, Mapping, Axios
 
-### Question #1
+### App #1
 
 Create a basic react app where you type in a text box and it shows up as text on the DOM.
 
@@ -70,7 +70,7 @@ export default App;
 
 <img src="https://github.com/DevMountain/react-drills/blob/assets/1g.gif" />
 
-### Question #2
+### App #2
 
 Create an app where there is an array of data on state that is then shown on the DOM as a list. The array of data can be as simple as an array of strings. The list can be as simple as a list of `<h2>` elements.
 
@@ -112,7 +112,7 @@ export default App;
 
 <img src="https://github.com/DevMountain/react-drills/blob/assets/2.png" />
 
-### Question #3
+### App #3
 
 Create an app where there is an array of data on state that is then shown on the DOM as a list. There should also be a way for the user to filter what's shown in the list. The array of data can be as simple as an array of strings. The list can be as simple as a list of `<h2>` elements.
 
@@ -170,7 +170,7 @@ export default App;
 
 ## Set 2 - State, Class Methods, Capturing User Input, Props, Multiple Components
 
-### Question #4
+### App #4
 
 Create a `Login` component that has two text inputs, one for a `username` and one for a `password`, and a button to login the user. When the login button is clicked, an alert should be showed to the user that displays what the user typed in for the `username` and `password`.
 
@@ -259,7 +259,7 @@ export default Login;
 
 <img src="https://github.com/DevMountain/react-drills/blob/assets/4g.gif" />
 
-### Question #5
+### App #5
 
 Create an `Image` component that renders an `<img />` element. The `src` for the `<img />` should be passed down as a prop from the parent component. You can use whatever image URL you would like to or you can get a placeholder from <a href="https://placeholder.com/">Click Me!</a>
 
@@ -315,7 +315,7 @@ export default class Image extends Component {
 
 <img src="https://github.com/DevMountain/react-drills/blob/assets/5.png" />
 
-### Question #6
+### App #6
 
 Create an app that displays a to-do list. You will need two components, the `App` component and a `Todo` component. The `App` component should be responsible for getting new tasks and storing the list of tasks. The `Todo` component should be responsible for displaying the individual tasks from the `App` component. The `App` component should create a list of 'Todo' components passing down a `task` into the `Todo` component as a prop and display the list.
 
@@ -406,9 +406,9 @@ export default class ToDo extends Component {
 
 <img src="https://github.com/DevMountain/react-drills/blob/assets/6-7g.gif" />
 
-### Question #7
+### App #7
 
-Create an app similiar to question #6, except this time add a new third component called `NewTask`. `NewTask` should be responsible for adding a new task to a `task array` on the `App` component. Also add a new fourth component called `List`. `List` should be responsible for display the tasks inside of a `task array` on the `App` component in a list-like fashion.
+Create an app similiar to app #6, except this time add a new third component called `NewTask`. `NewTask` should be responsible for adding a new task to a `task array` on the `App` component. Also add a new fourth component called `List`. `List` should be responsible for display the tasks inside of a `task array` on the `App` component in a list-like fashion.
 
 <details>
 
@@ -542,7 +542,7 @@ export default class Todo extends Component {
 
 ## Set 3 - Axios ( hitting an API ), React Lifecycle Methods
 
-### Question #8
+### App #8
 
 Create an app hitting an API of your choice (swapi.co, birdapi.com, pokeapi, smurfs, marvel api, etc). The API should be hit as soon as the component is finished rendering. The app should set value(s) on state based on results from the API and then show the propertie(s) on state in the DOM.
 
@@ -605,7 +605,7 @@ Complete the HTTP mini located at: <a href="https://github.com/DevMountain/http-
 
 ## Set 4 - react-router-dom ( Routing ), Axios ( hitting an API )
 
-### Question #9
+### App #9
 
 Create an app that has three routes (using `react-router-dom`):
 
@@ -767,7 +767,7 @@ export default function Signup() {
 
 <img src="https://github.com/DevMountain/react-drills/blob/assets/9g.gif" />
 
-### Question #10
+### App #10
 
 Create an app that has two routes (using `react-router-dom`):
 
