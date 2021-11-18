@@ -27,9 +27,9 @@ class App extends Component{
     <div className="App">
       <header className="App-header">
       <label>Username: </label>
-      <input onChange={this.handleUsername.bind(this)}/>
+      <input type='text' onChange={this.handleUsername.bind(this)}/>
       <label>Password: </label>
-      <input onChange={this.handlePassword.bind(this)}/>
+      <input type='text' onChange={this.handlePassword.bind(this)}/>
       <button onClick={this.handleSubmit.bind(this)}>SUBMIT</button>
       </header>
     </div>

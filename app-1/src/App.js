@@ -17,7 +17,7 @@ class App extends Component{
   return (
     <div className="App">
       <header className="App-header">
-      <input onChange={this.handleChange.bind(this)}/>
+      <input type='text' onChange={this.handleChange.bind(this)}/>
         <p>
           {this.state.text}
         </p>
