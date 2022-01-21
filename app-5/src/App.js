@@ -14,7 +14,7 @@ class App extends Component{
   return (
     <div className="App">
       <header className="App-header">
-      <Image url={this.state.url}/>
+      <Image url={this.state.url} alt="" />
       </header>
     </div>
   );
