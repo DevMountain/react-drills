@@ -1,13 +1,11 @@
-import React, { Component } from 'react';
+import React, { useState } from 'react';
 import './App.css';
 
 
-class Todo extends Component {
-  render() {
+function Todo({item}) {
     return (
-      <li>{this.props.item}</li>
+      <li>{item}</li>
     )
-}
 }
 
 export default Todo;

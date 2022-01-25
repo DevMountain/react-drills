@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import './App.css';
+import ReactDOM from 'react-dom';
 
 class App extends Component{
   constructor(){
@@ -12,6 +13,9 @@ class App extends Component{
   return (
     <div className="App">
       <header className="App-header">
+        <nav>
+          
+        </nav>
       </header>
     </div>
   );

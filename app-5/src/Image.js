@@ -1,13 +1,11 @@
-import React, { Component } from 'react';
+import React, { useState } from 'react';
 import './App.css';
 
 
-class Image extends Component {
-  render() {
-    return (
-    <img src={this.props.url}></img>
+function Image({url}) {
+  return (
+    <img src={url}></img>
   );
-}
 }
 
 export default Image;
