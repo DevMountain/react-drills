@@ -1,30 +1,41 @@
-import React, { Component } from 'react';
+import React, { useState } from 'react';
 import './App.css';
 
-class App extends Component{
-  constructor(){
-    super();
-    this.state = {
-      text: ''
-    }
-  }
+// class App extends Component{
+//   constructor(){
+//     super();
+//     this.state = {
+//       text: ''
+//     }
+//   }
 
-  handleChange(e) {
-    this.setState({text: e.target.value});
-  }
+//   handleChange(e) {
+//     this.setState({text: e.target.value});
+//   }
 
-  render() {
+//   render() {
+//   return (
+//     <div className="App">
+//       <header className="App-header">
+//       <input type='text' onChange={this.handleChange.bind(this)}/>
+//         <p>
+//           {this.state.text}
+//         </p>
+//       </header>
+//     </div>
+//   );
+// }
+// }
+
+function App() {
+  const [userInput, setValue] = useState('');
+
   return (
-    <div className="App">
-      <header className="App-header">
-      <input type='text' onChange={this.handleChange.bind(this)}/>
-        <p>
-          {this.state.text}
-        </p>
-      </header>
-    </div>
-  );
-}
+    <>
+      <input type="text" onChange={e => setValue(e.target.value)}></input>
+      <p>{userInput}</p>
+    </>
+  )
 }
 
 export default App;
