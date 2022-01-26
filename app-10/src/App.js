@@ -1,21 +1,13 @@
-import React, { Component } from 'react';
+import React from 'react';
 import './App.css';
+import router from './router';
 
-class App extends Component{
-  constructor(){
-    super();
-    this.state = {
-    }
-  }
-
-  render() {
+function App() {
   return (
     <div className="App">
-      <header className="App-header">
-      </header>
+      {router}
     </div>
   );
-}
 }
 
 export default App;
