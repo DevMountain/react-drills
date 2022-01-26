@@ -1,13 +1,11 @@
-import React, { Component } from 'react';
+import React from 'react';
 import './App.css';
 
 
-class List extends Component {
-  render() {
+function List({item}) {
     return (
-      <li>{this.props.item}</li>
+      <li>{item}</li>
     )
-}
 }
 
 export default List;

@@ -1,28 +1,21 @@
-import React, { Component } from 'react';
+import React, { useState } from 'react';
 import './App.css';
 import axios from 'axios';
 
-class App extends Component{
-  constructor(){
-    super();
-    this.state = {
-      verse: '',
-      
-    }
-  }
-  componentDidMount() {
-    axios.get('https://bible-api.com/john 3:16?translation=kjv').then(res => {
-      this.setState({verse: res.data});
-    })
-  }
-  render() {
+function App() {
+  const [verse, setVerse] = useState({});
+
+  axios.get('https://bible-api.com/genesis 9:25?translation=kjv').then(res => {
+    setVerse(res.data);
+  })
+
   return (
     <div className="App">
-      <p>{this.state.verse.reference}</p>
-      <p>{this.state.verse.text}</p>
+      <p>{verse.reference}</p>
+      <p>{verse.text}</p>
     </div>
   );
-}
+
 }
 
 export default App;

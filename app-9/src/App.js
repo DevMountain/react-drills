@@ -1,25 +1,20 @@
-import React, { Component } from 'react';
+import React from 'react';
 import './App.css';
-import ReactDOM from 'react-dom';
+import { Link } from 'react-router-dom';
+import router from './router';
 
-class App extends Component{
-  constructor(){
-    super();
-    this.state = {
-    }
-  }
-
-  render() {
+function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <nav>
-          
-        </nav>
-      </header>
+      <nav>
+        <Link to="/">Home</Link>
+        <Link to="/signup">Signup</Link>
+        <Link to="/details">Details</Link>
+      </nav>
+      <br />
+      {router}
     </div>
   );
-}
 }
 
 export default App;

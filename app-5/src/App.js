@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import './App.css';
 import Image from './Image.js';
 
@@ -24,7 +24,7 @@ import Image from './Image.js';
 function App() {
   return (
     <>
-      <Image url='https://upload.wikimedia.org/wikipedia/en/8/84/Ogden_Kraut2.jpg' />
+      <Image title='Ogden Kraut' url='https://upload.wikimedia.org/wikipedia/en/8/84/Ogden_Kraut2.jpg' />
     </>
   );
 }

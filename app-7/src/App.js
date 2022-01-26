@@ -1,41 +1,34 @@
-import React, { Component } from 'react';
+import React, { useState } from 'react';
 import './App.css';
 import List from './List.js';
 import NewTask from './NewTask.js';
 
-class App extends Component{
-  constructor(){
-    super();
-    this.state = {
-      todo: [],
-      input: ''
-    }
+function App() {
+  const [toDo, setToDo] = useState([]);
+  const [input, setInput] = useState('');
+
+  const handleSubmit = () => {
+    const newList = [...toDo, ...[input]];
+    setToDo(newList);
   }
 
-  handleSubmit() {
-    let newArr = this.state.todo;
-    newArr.push(this.state.input);
-    this.setState({todo: newArr});
+  const handleInput = (e) => {
+    setInput(e.target.value);
   }
 
-  handleInput(e) {
-    this.setState({input: e.target.value});
-  }
-
-  render() {
   return (
     <div className="App">
-      <header className="App-header">
-      <NewTask submit={this.handleSubmit.bind(this)} input={this.handleInput.bind(this)} />
-      {this.state.todo.map(item => {
-      return (
-        <List item={item}/>
-      )
-      })}
-      </header>
+      <NewTask submit={handleSubmit} input={handleInput} />
+      <ul>
+        {toDo.map((item, index) => {
+        return (
+          <List key={index} item={item}/>
+        )
+        })}
+      </ul>
     </div>
   );
-}
+
 }
 
 export default App;

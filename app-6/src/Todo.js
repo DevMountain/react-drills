@@ -1,11 +1,9 @@
-import React, { useState } from 'react';
-import './App.css';
+import React from 'react';
 
-
-function Todo({item}) {
+function ToDo({item}) {
     return (
       <li>{item}</li>
     )
 }
 
-export default Todo;
+export default ToDo;

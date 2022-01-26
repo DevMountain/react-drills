@@ -1,10 +1,11 @@
-import React, { useState } from 'react';
-import './App.css';
+import React from 'react';
 
-
-function Image({url}) {
+function Image({url, title}) {
   return (
-    <img src={url}></img>
+    <>
+      <h1>{title}</h1>
+      <img src={url} alt='Ogden Kraut'></img>
+    </>
   );
 }
 
