@@ -1,30 +1,40 @@
-import React, { useState } from "react";
+import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import axios from "axios";
 
-function Products() {
-    let [oldProducts, setProducts] = useState([]);
+class Products extends Component {
+  constructor() {
+    super();
+    
+    this.state = {
+      products: []
+    }
+  }
 
-    axios.get("https://practiceapi.devmountain.com/products").then(response => {
-        setProducts(response.data);
-    });
+    componentDidMount() {
+      axios.get("https://practiceapi.devmountain.com/products").then(response => {
+          this.setState({ products:response.data });
+      });
+    }
 
-    let newProducts = oldProducts.map((product, index) => {
-        if (product.image) {
-          return (
-            <Link key={index} to={`/details/${product.id}`}>
-              <img width="200" src={product.image} />
-            </Link>
-          );
-        }
-    })
+    render() {
+      let products = this.state.products.map((product, index) => {
+          if (product.image) {
+            return (
+              <Link key={index} to={`/details/${product.id}`}>
+                <img width="200" src={product.image} />
+              </Link>
+            );
+          }
+      });
 
-    return (
-      <div>
-        <h1>Products</h1>
-        {newProducts}
-      </div>
-    );
+      return (
+        <div>
+          <h1>Products</h1>
+          {products}
+        </div>
+      );
+    }
 }
 
 export default Products;

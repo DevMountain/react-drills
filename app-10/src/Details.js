@@ -1,23 +1,40 @@
-import React, { useState } from 'react';
+import React, { Component } from 'react';
 import { useParams } from 'react-router-dom';
 import axios from 'axios';
 
-function Details() {
-    const [item, setItem] = useState({});
-    const { id } = useParams()
-
-    axios.get(`https://practiceapi.devmountain.com/products/${id}`)
-      .then(res => {
-          setItem(res.data);
-      });
-    
-    return(
-        <div>
-            <h2>{item.title}</h2>
-            <img width="200" src={item.image} />
-            <h4>{`Price: $${item.price}.00`}</h4>
-        </div>
-    );
+export function withRouter(Children) {
+    return(props)=>{
+        const match = {params: useParams()};
+        return <Children {...props} match={match} />
+    }
 }
 
-export default Details;
+class Details extends Component {
+    constructor() {
+        super();
+        
+        this.state = {
+            item: {}
+        }
+    }
+    
+    componentDidMount() {
+        const id = this.props.match.params.id;
+        axios.get(`https://practiceapi.devmountain.com/products/${id}`)
+        .then(res => {
+            this.setState({ item: res.data });
+        });
+    }
+    
+    render() {
+        return(
+            <div>
+                <h2>{this.state.item.title}</h2>
+                <img width="200" src={this.state.item.image} />
+                <h4>{`Price: $${this.state.item.price}.00`}</h4>
+            </div>
+        );
+    }
+}
+
+export default withRouter(Details);

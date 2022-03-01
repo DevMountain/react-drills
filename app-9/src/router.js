@@ -8,6 +8,6 @@ export default (
     <Routes>
         <Route path='/' element={<Home />} />
         <Route path='/signup' element={<Signup />} />
-        <Route path='/details' element={<Details />} />
+        <Route path='/details' render={({ match }) => <Details id={match.params.id} />} />
     </Routes>
 );
