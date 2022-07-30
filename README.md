@@ -656,18 +656,18 @@ registerServiceWorker();
 
 ```javascript
 import React from "react";
-import { Switch, Route } from "react-router-dom";
+import { Routes, Route } from "react-router-dom";
 
 import Home from "./Home";
 import Signup from "./Signup";
 import Details from "./Details";
 
 export default (
-  <Switch>
+  <Routes>
     <Route exact path="/" component={Home} />
     <Route path="/signup" component={Signup} />
     <Route path="/details" component={Details} />
-  </Switch>
+  </Routes>
 );
 ```
 
@@ -811,16 +811,16 @@ registerServiceWorker();
 
 ```js
 import React from "react";
-import { Switch, Route } from "react-router-dom";
+import { Routes, Route } from "react-router-dom";
 
 import Products from "./Products";
 import Details from "./Details";
 
 export default (
-  <Switch>
+  <Routes>
     <Route exact path="/" component={Products} />
     <Route path="/details/:id" component={Details} />
-  </Switch>
+  </Routes>
 );
 ```
 
